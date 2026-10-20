@@ -9,6 +9,9 @@ public struct Preset: Identifiable, Equatable, Sendable {
 
     public var id: String { (builtIn ? "builtin:" : "user:") + name }
 
+    /// Name to show: built-in names are translated, yours are shown as typed.
+    public var displayName: String { builtIn ? L(name) : name }
+
     public init(name: String, layout: Layout, builtIn: Bool = false, url: URL? = nil) {
         self.name = name
         self.layout = layout
@@ -71,7 +74,7 @@ public struct PresetStore: Sendable {
     public func save(_ layout: Layout, named name: String) throws -> URL {
         let clean = name.trimmingCharacters(in: .whitespacesAndNewlines)
             .replacingOccurrences(of: "/", with: "-").replacingOccurrences(of: ":", with: "-")
-        guard !clean.isEmpty, !clean.hasPrefix(".") else { throw LayoutError(["Nome de preset inválido"]) }
+        guard !clean.isEmpty, !clean.hasPrefix(".") else { throw LayoutError([L("Nome de preset inválido")]) }
         let url = directory.appendingPathComponent(clean).appendingPathExtension("yaml")
         try layout.save(to: url)
         return url

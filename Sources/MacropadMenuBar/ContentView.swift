@@ -44,9 +44,9 @@ private struct HeaderView: View {
                 .foregroundStyle(.tint)
             VStack(alignment: .leading, spacing: 1) {
                 Text("Macropad").font(.headline)
-                Text("6 teclas + knob · v\(Updater.version)")
+                Text(L("6 teclas + knob · v%@", Updater.version))
                     .font(.caption).foregroundStyle(.secondary)
-                    .help("Versão \(Updater.versionDescription) · USB 1189:8890")
+                    .help(L("Versão %@", Updater.versionDescription) + " · USB 1189:8890")
             }
             Spacer()
             if model.busy { ProgressView().controlSize(.small) }
@@ -54,7 +54,7 @@ private struct HeaderView: View {
                 Circle()
                     .fill(model.connected ? Color.green : Color.secondary.opacity(0.5))
                     .frame(width: 8, height: 8)
-                Text(model.connected ? "Conectado" : "Desconectado")
+                Text(model.connected ? L("Conectado") : L("Desconectado"))
                     .font(.caption)
                     .foregroundStyle(model.connected ? .primary : .secondary)
             }
@@ -181,7 +181,7 @@ private struct KeyCap: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .help("\(slot.title): \(text ?? "sem ação")")
+        .help("\(slot.title): \(text ?? L("sem ação"))")
     }
 }
 
@@ -215,7 +215,7 @@ private struct KnobView: View {
                 .contentShape(Circle())
             }
             .buttonStyle(.plain)
-            .help("Knob pressionar: \(model.layout.text(layer: model.layer, slot: .knobPress) ?? "sem ação")")
+            .help("\(Slot.knobPress.title): \(model.layout.text(layer: model.layer, slot: .knobPress) ?? L("sem ação"))")
 
             HStack(spacing: 6) {
                 turnButton(.knobLeft, systemImage: "arrow.counterclockwise")
@@ -248,7 +248,7 @@ private struct KnobView: View {
                 .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .help("\(slot.title): \(model.layout.text(layer: model.layer, slot: slot) ?? "sem ação")")
+        .help("\(slot.title): \(model.layout.text(layer: model.layer, slot: slot) ?? L("sem ação"))")
     }
 }
 
@@ -265,7 +265,7 @@ private struct LEDPicker: View {
                 get: { model.layout.led },
                 set: { if let mode = $0, mode != model.layout.led { model.setLED(mode) } }
             )) {
-                ForEach(PadProtocol.ledModes, id: \.self) { Text(PadModel.ledTitles[$0]).tag(Optional($0)) }
+                ForEach(PadProtocol.ledModes, id: \.self) { Text(L(PadModel.ledTitles[$0])).tag(Optional($0)) }
             }
             .pickerStyle(.segmented)
             .labelsHidden()
@@ -284,18 +284,18 @@ private struct PresetsRow: View {
             HStack {
                 Label("Presets", systemImage: "square.stack.3d.up").font(.subheadline)
                 Spacer()
-                Menu("Aplicar preset") {
-                    Section("Prontos") {
+                Menu(L("Aplicar preset")) {
+                    Section(L("Prontos")) {
                         ForEach(Preset.builtIns) { preset in
-                            Button(preset.name) { model.applyPreset(preset) }
+                            Button(preset.displayName) { model.applyPreset(preset) }
                         }
                     }
                     if !model.userPresets.isEmpty {
-                        Section("Meus presets") {
+                        Section(L("Meus presets")) {
                             ForEach(model.userPresets) { preset in
                                 Menu(preset.name) {
-                                    Button("Aplicar") { model.applyPreset(preset) }
-                                    Button("Excluir", role: .destructive) { model.deletePreset(preset) }
+                                    Button(L("Aplicar")) { model.applyPreset(preset) }
+                                    Button(L("Excluir"), role: .destructive) { model.deletePreset(preset) }
                                 }
                             }
                         }
@@ -304,20 +304,20 @@ private struct PresetsRow: View {
                 .fixedSize()
                 .disabled(!model.connected || model.busy)
                 Menu {
-                    Button("Salvar layout atual como preset…") { newName = "" }
-                    Button("Importar preset (YAML)…") { model.importPreset() }
-                    Button("Exportar layout atual…") { model.exportLayout() }
+                    Button(L("Salvar layout atual como preset…")) { newName = "" }
+                    Button(L("Importar preset (YAML)…")) { model.importPreset() }
+                    Button(L("Exportar layout atual…")) { model.exportLayout() }
                 } label: { Image(systemName: "ellipsis.circle") }
                     .menuStyle(.borderlessButton)
                     .fixedSize()
             }
             if newName != nil {
                 HStack {
-                    TextField("Nome do preset", text: Binding(get: { newName ?? "" }, set: { newName = $0 }))
+                    TextField(L("Nome do preset"), text: Binding(get: { newName ?? "" }, set: { newName = $0 }))
                         .textFieldStyle(.roundedBorder)
                         .onSubmit(save)
-                    Button("Salvar", action: save).disabled((newName ?? "").trimmingCharacters(in: .whitespaces).isEmpty)
-                    Button("Cancelar") { newName = nil }
+                    Button(L("Salvar"), action: save).disabled((newName ?? "").trimmingCharacters(in: .whitespaces).isEmpty)
+                    Button(L("Cancelar")) { newName = nil }
                 }
             }
         }
@@ -344,7 +344,7 @@ private struct MessageView: View {
                     .textSelection(.enabled)
                 Spacer(minLength: 0)
                 if model.undoLayout != nil {
-                    Button("Desfazer") { model.undo() }.controlSize(.small)
+                    Button(L("Desfazer")) { model.undo() }.controlSize(.small)
                 }
                 Button { model.message = nil } label: { Image(systemName: "xmark") }
                     .buttonStyle(.borderless)
@@ -362,25 +362,29 @@ private struct FooterView: View {
     var body: some View {
         HStack {
             if model.identifying {
-                Button("Restaurar layout") { model.reapplyCurrent() }
+                Button(L("Restaurar layout")) { model.reapplyCurrent() }
             } else {
-                Button("Identificar teclas") { model.identify() }
-                    .help("Cada tecla passa a digitar seu número (1–6; knob 7/8/9) para você descobrir qual é qual")
+                Button(L("Identificar teclas")) { model.identify() }
+                    .help(L("Cada tecla passa a digitar seu número (1–6; knob 7/8/9) para você descobrir qual é qual"))
             }
-            Button("Regravar tudo") { model.reapplyCurrent() }
-                .help("Grava o layout inteiro de novo no pad (útil se ele foi programado por outro programa)")
+            Button(L("Regravar tudo")) { model.reapplyCurrent() }
+                .help(L("Grava o layout inteiro de novo no pad (útil se ele foi programado por outro programa)"))
             Spacer()
             Menu {
-                Toggle("Abrir ao iniciar sessão", isOn: Binding(
+                Toggle(L("Abrir ao iniciar sessão"), isOn: Binding(
                     get: { model.launchAtLogin }, set: { model.toggleLaunchAtLogin($0) }))
-                Button(model.updating ? "Atualizando…" : "Atualizar Macropad…") { model.checkForUpdates() }
+                Button(model.updating ? L("Atualizando…") : L("Atualizar Macropad…")) { model.checkForUpdates() }
                     .disabled(model.updating)
-                Button("Mostrar arquivo de layout") { model.revealLayoutFile() }
-                Button("Recarregar") { model.reload() }
+                Button(L("Mostrar arquivo de layout")) { model.revealLayoutFile() }
+                Button(L("Recarregar")) { model.reload() }
+                Picker(L("Idioma"), selection: Binding(get: { model.language }, set: { model.setLanguage($0) })) {
+                    Text(L("Sistema (%@)", Language.system.nativeName)).tag(Language?.none)
+                    ForEach(Language.allCases) { Text($0.nativeName).tag(Optional($0)) }
+                }
                 Divider()
-                Button("Sair do Macropad") { NSApp.terminate(nil) }
+                Button(L("Sair do Macropad")) { NSApp.terminate(nil) }
                 Divider()
-                Text("Versão \(Updater.versionDescription)")
+                Text(L("Versão %@", Updater.versionDescription))
             } label: { Image(systemName: "gearshape") }
                 .menuStyle(.borderlessButton)
                 .fixedSize()

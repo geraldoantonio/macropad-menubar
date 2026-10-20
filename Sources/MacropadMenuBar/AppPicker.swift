@@ -1,4 +1,5 @@
 import AppKit
+import MacropadCore
 import SwiftUI
 import UniformTypeIdentifiers
 
@@ -85,16 +86,16 @@ struct AppPickerMenu<LabelView: View>: View {
     var body: some View {
         Menu {
             if !running.isEmpty {
-                Section("Abertos agora") {
+                Section(L("Abertos agora")) {
                     ForEach(running) { item($0) }
                 }
             }
-            Section("Aplicativos") {
+            Section(L("Aplicativos")) {
                 ForEach(installed) { item($0) }
             }
             Divider()
-            Button("Outro…") {
-                if let app = AppCatalog.chooseWithPanel(message: "Escolha um app") { onPick(app) }
+            Button(L("Outro…")) {
+                if let app = AppCatalog.chooseWithPanel(message: L("Escolha um app")) { onPick(app) }
             }
         } label: {
             label()

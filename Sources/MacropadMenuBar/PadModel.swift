@@ -30,6 +30,8 @@ final class PadModel: ObservableObject {
     @Published private(set) var activePresetID: String?
     @Published private(set) var frontAppName: String?
     @Published private(set) var updating = false
+    /// Chosen language (nil = follow macOS).
+    @Published private(set) var language: Language?
 
     let layoutURL = Layout.defaultURL
     private let presetStore = PresetStore()
@@ -46,6 +48,8 @@ final class PadModel: ObservableObject {
     }
 
     init() {
+        language = config.language
+        L10n.override = config.language
         reload()
         monitor = PadMonitor { [weak self] connected in
             Task { @MainActor in self?.connected = connected }
@@ -68,7 +72,7 @@ final class PadModel: ObservableObject {
         do {
             layout = try Layout.load(from: layoutURL)
         } catch {
-            show("Layout em \(layoutURL.path) com problemas:\n\(error.localizedDescription)", error: true)
+            show(L("Layout em %@ com problemas:", layoutURL.path) + "\n" + error.localizedDescription, error: true)
         }
         userPresets = presetStore.userPresets()
     }
@@ -91,13 +95,13 @@ final class PadModel: ObservableObject {
     func clear(_ slot: Slot) {
         let layer = self.layer
         write(PadProtocol.bindPackets(slot: slot, layer: layer, action: nil),
-              success: "\(slot.title) limpa") { layout in
+              success: L("%@ limpa", slot.title)) { layout in
             layout.clear(layer: layer, slot: slot)
         }
     }
 
     func setLED(_ mode: Int) {
-        write(PadProtocol.ledPackets(mode: mode), success: "LED: \(Self.ledTitles[mode])") { layout in
+        write(PadProtocol.ledPackets(mode: mode), success: "LED: " + L(Self.ledTitles[mode])) { layout in
             layout.led = mode
         }
     }
@@ -111,14 +115,14 @@ final class PadModel: ObservableObject {
             show(error.localizedDescription, error: true)
             return
         }
-        write(packets, success: "“\(name)” gravado no pad", update: { layout in
+        write(packets, success: L("“%@” gravado no pad", name), update: { layout in
             layout = newLayout
         }, after: after)
     }
 
     func applyPreset(_ preset: Preset) {
         let previous = layout
-        apply(preset.layout, name: preset.name) {
+        apply(preset.layout, name: preset.displayName) {
             self.undoLayout = previous
             self.activePresetID = preset.id
         }
@@ -126,18 +130,18 @@ final class PadModel: ObservableObject {
 
     func undo() {
         guard let previous = undoLayout else { return }
-        apply(previous, name: "Layout anterior")
+        apply(previous, name: L("Layout anterior"))
     }
 
     func reapplyCurrent() {
-        apply(layout, name: "Layout atual") { self.identifying = false }
+        apply(layout, name: L("Layout atual")) { self.identifying = false }
     }
 
     /// Makes each key type its slot number so you can learn the physical layout. The layout
     /// file isn't changed; `reapplyCurrent()` restores the pad.
     func identify() {
         write(PadProtocol.identifyPackets(),
-              success: "Modo identificar: abra um campo de texto e aperte cada tecla. Depois clique em Restaurar.",
+              success: L("Modo identificar: abra um campo de texto e aperte cada tecla. Depois clique em Restaurar."),
               update: nil) { self.identifying = true }
     }
 
@@ -167,7 +171,7 @@ final class PadModel: ObservableObject {
                         update(&copy)
                         self.layout = copy
                         do { try copy.save(to: self.layoutURL) } catch {
-                            self.show("Gravado no pad, mas não consegui salvar \(self.layoutURL.path): \(error.localizedDescription)", error: true)
+                            self.show(L("Gravado no pad, mas não consegui salvar %@: %@", self.layoutURL.path, error.localizedDescription), error: true)
                             return
                         }
                     }
@@ -187,7 +191,7 @@ final class PadModel: ObservableObject {
         do {
             try presetStore.save(layout, named: name)
             userPresets = presetStore.userPresets()
-            show("Preset “\(name)” salvo", error: false)
+            show(L("Preset “%@” salvo", name), error: false)
         } catch {
             show(error.localizedDescription, error: true)
         }
@@ -207,14 +211,14 @@ final class PadModel: ObservableObject {
         NSApp.activate(ignoringOtherApps: true)
         let panel = NSOpenPanel()
         panel.allowedContentTypes = [UTType(filenameExtension: "yaml"), UTType(filenameExtension: "yml")].compactMap { $0 }
-        panel.message = "Escolha um layout YAML (formato do macropad CLI)"
+        panel.message = L("Escolha um layout YAML (formato do macropad CLI)")
         panel.level = NSWindow.Level(rawValue: NSWindow.Level.popUpMenu.rawValue + 1)
         guard panel.runModal() == .OK, let url = panel.url else { return }
         do {
             let imported = try Layout.load(from: url)
             try presetStore.save(imported, named: url.deletingPathExtension().lastPathComponent)
             userPresets = presetStore.userPresets()
-            show("Preset “\(url.deletingPathExtension().lastPathComponent)” importado", error: false)
+            show(L("Preset “%@” importado", url.deletingPathExtension().lastPathComponent), error: false)
         } catch {
             show(error.localizedDescription, error: true)
         }
@@ -253,16 +257,16 @@ final class PadModel: ObservableObject {
 
     /// Binds `slot` to a fresh trigger shortcut and remembers what to run when it arrives.
     func setCommand(_ slot: Slot, _ command: Command) {
-        guard command.isValid else { show("Preencha o que a tecla deve abrir ou executar", error: true); return }
+        guard command.isValid else { show(L("Preencha o que a tecla deve abrir ou executar"), error: true); return }
         let inUse = Set(([layout] + userPresets.map(\.layout)).flatMap { $0.layers.values.flatMap(\.values) }
             .compactMap { try? Action(parsing: $0).canonical })
         guard let trigger = config.freeTrigger(reserved: inUse), let action = try? Action(parsing: trigger) else {
-            show("Todos os atalhos-gatilho estão em uso; limpe alguma tecla de programa", error: true)
+            show(L("Todos os atalhos-gatilho estão em uso; limpe alguma tecla de programa"), error: true)
             return
         }
         let layer = self.layer
         write(PadProtocol.bindPackets(slot: slot, layer: layer, action: action),
-              success: "\(slot.title) abre “\(command.label)” (envia \(action.displayLabel))",
+              success: L("%@ abre “%@” (envia %@)", slot.title, command.label, action.displayLabel),
               update: { layout in try? layout.set(layer: layer, slot: slot, actionText: trigger) },
               after: {
                   self.config.commands[trigger] = command
@@ -283,14 +287,14 @@ final class PadModel: ObservableObject {
     }
 
     private func saveConfig() {
-        do { try config.save() } catch { show("Não consegui salvar \(AppConfig.defaultURL.path): \(error.localizedDescription)", error: true) }
+        do { try config.save() } catch { show(L("Não consegui salvar %@: %@", AppConfig.defaultURL.path, error.localizedDescription), error: true) }
         syncHotKeys()
     }
 
     private func syncHotKeys() {
         let failed = HotKeyCenter.shared.sync(Set(config.commands.keys))
         if !failed.isEmpty {
-            show("Outro app já usa \(failed.joined(separator: ", ")); essas teclas não vão abrir nada", error: true)
+            show(L("Outro app já usa %@; essas teclas não vão abrir nada", failed.joined(separator: ", ")), error: true)
         }
     }
 
@@ -337,7 +341,7 @@ final class PadModel: ObservableObject {
     private func applyAutomatically(_ preset: Preset, appName: String) {
         guard let packets = try? PadProtocol.applyPackets(preset.layout) else { return }
         activePresetID = preset.id
-        write(packets, success: "\(appName): preset “\(preset.name)”",
+        write(packets, success: L("%@: preset “%@”", appName, preset.displayName),
               update: { layout in layout = preset.layout }, quiet: true)
     }
 
@@ -346,29 +350,37 @@ final class PadModel: ObservableObject {
     func checkForUpdates() {
         guard !updating else { return }
         updating = true
-        show("Procurando atualizações…", error: false)
+        show(L("Procurando atualizações…"), error: false)
         Task { @MainActor in
             defer { updating = false }
             switch await Updater.check() {
             case .upToDate:
-                show("Você já está na versão mais nova (\(Updater.versionDescription)).", error: false)
+                show(L("Você já está na versão mais nova (%@).", Updater.versionDescription), error: false)
             case .failed(let reason):
-                show("Não consegui verificar atualizações: \(reason)", error: true)
+                show(L("Não consegui verificar atualizações: %@", reason), error: true)
             case .available(let commit):
-                show("Baixando a versão \(commit.prefix(7))… o Macropad vai fechar e abrir de novo sozinho.", error: false)
+                show(L("Baixando a versão %@… o Macropad vai fechar e abrir de novo sozinho.", String(commit.prefix(7))), error: false)
                 let reason = await Updater.install()
-                show("A atualização falhou: \(reason)", error: true)
+                show(L("A atualização falhou: %@", reason), error: true)
             }
         }
     }
 
     // MARK: Misc
 
+    func setLanguage(_ language: Language?) {
+        self.language = language
+        L10n.override = language
+        config.language = language
+        saveConfig()
+        message = nil
+    }
+
     func toggleLaunchAtLogin(_ enabled: Bool) {
         do {
             if enabled { try SMAppService.mainApp.register() } else { try SMAppService.mainApp.unregister() }
         } catch {
-            show("Abrir no login: \(error.localizedDescription)", error: true)
+            show(L("Abrir no login: %@", error.localizedDescription), error: true)
         }
         launchAtLogin = SMAppService.mainApp.status == .enabled
     }

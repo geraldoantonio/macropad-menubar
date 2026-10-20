@@ -1,5 +1,6 @@
 import AppKit
 import Foundation
+import MacropadCore
 
 /// "Atualizar Macropad": downloads the newest release and swaps the installed app.
 ///
@@ -41,14 +42,14 @@ enum Updater {
         if let latest = lines.first(where: { $0.hasPrefix("LATEST ") }) {
             let parts = latest.split(separator: " ").map(String.init)
             let commit = parts.count > 1 ? parts[1] : ""
-            guard commit.count >= 7 else { return .failed("resposta inesperada do GitHub: \(latest)") }
+            guard commit.count >= 7 else { return .failed(L("resposta inesperada do GitHub: %@", latest)) }
             if let current = currentCommit, current.count >= 7, commit.hasPrefix(current) || current.hasPrefix(commit) {
                 return .upToDate
             }
             return .available(commit: commit)
         }
-        let error = lines.last(where: { $0.hasPrefix("ERRO") }).map { String($0.dropFirst(5)) }
-        return .failed(error ?? (output.text.isEmpty ? "sem resposta do script de atualização" : output.text))
+        let error = lines.last(where: { $0.hasPrefix("ERRO") }).map { message(for: String($0.dropFirst(5))) }
+        return .failed(error ?? (output.text.isEmpty ? L("sem resposta do script de atualização") : output.text))
     }
 
     /// Downloads/builds the new version, then quits this app; the script installs and relaunches.
@@ -57,8 +58,22 @@ enum Updater {
         let output = await run(mode: "install")
         // Success means the script killed us; reaching here means it failed.
         let lines = output.text.split(separator: "\n").map(String.init)
-        return lines.last(where: { $0.hasPrefix("ERRO") }).map { String($0.dropFirst(5)) }
-            ?? "a atualização falhou; veja \(logURL.path)"
+        return lines.last(where: { $0.hasPrefix("ERRO") }).map { message(for: String($0.dropFirst(5))) }
+            ?? L("a atualização falhou; veja %@", logURL.path)
+    }
+
+    /// The script reports failures as short codes; this turns them into text.
+    private static func message(for code: String) -> String {
+        switch code {
+        case "net": L("não consegui consultar o GitHub (sem internet?)")
+        case "nocommit": L("a release mais nova não tem commit.txt")
+        case "download": L("download falhou")
+        case "zip": L("zip inválido")
+        case "noapp": L("não achei o Macropad.app no download")
+        case "copy": L("não consegui copiar para /Applications")
+        case "zsh": L("não consegui rodar o zsh")
+        default: code
+        }
     }
 
     private static func run(mode: String) async -> (status: Int32, text: String) {
@@ -78,7 +93,7 @@ enum Updater {
                 continuation.resume(returning: (process.terminationStatus, text))
             }
             do { try process.run() } catch {
-                continuation.resume(returning: (-1, "ERRO não consegui rodar o zsh: \(error.localizedDescription)"))
+                continuation.resume(returning: (-1, "ERRO zsh"))
             }
         }
     }
@@ -94,20 +109,20 @@ enum Updater {
     TAG=$(curl -fsSL --max-time 20 -H "Accept: application/vnd.github+json" \
             "https://api.github.com/repos/$REPO/releases/latest" \
           | grep -m1 '"tag_name"' | sed -E 's/.*"tag_name": *"([^"]+)".*/\1/')
-    [ -n "$TAG" ] || fail "não consegui consultar o GitHub (sem internet?)"
+    [ -n "$TAG" ] || fail net
     BASE="https://github.com/$REPO/releases/download/$TAG"
     LATEST=$(curl -fsSL --max-time 20 "$BASE/commit.txt" | tr -d '[:space:]') \
-      || fail "a release $TAG não tem commit.txt"
-    [ -n "$LATEST" ] || fail "a release mais nova não tem commit.txt"
+      || fail nocommit
+    [ -n "$LATEST" ] || fail nocommit
     echo "LATEST $LATEST $TAG"
     [ "$MODE" = check ] && exit 0
 
     WORK="$(mktemp -d /tmp/macropad-update.XXXXXX)"
     echo "Baixando…"
-    curl -fL --max-time 300 -o "$WORK/Macropad.zip" "$BASE/Macropad.zip" || fail "download falhou"
-    ditto -xk "$WORK/Macropad.zip" "$WORK/app" || fail "zip inválido"
+    curl -fL --max-time 300 -o "$WORK/Macropad.zip" "$BASE/Macropad.zip" || fail download
+    ditto -xk "$WORK/Macropad.zip" "$WORK/app" || fail zip
     NEW=$(find "$WORK/app" -maxdepth 2 -name 'Macropad.app' | head -1)
-    [ -d "${NEW:-}" ] || fail "não achei o Macropad.app no download"
+    [ -d "${NEW:-}" ] || fail noapp
 
     echo "Instalando…"
     kill "$APP_PID" 2>/dev/null
@@ -119,7 +134,7 @@ enum Updater {
     else
       [ -d /Applications/Macropad.app.old ] && mv /Applications/Macropad.app.old /Applications/Macropad.app
       open /Applications/Macropad.app
-      fail "não consegui copiar para /Applications"
+      fail copy
     fi
     xattr -dr com.apple.quarantine /Applications/Macropad.app 2>/dev/null
     open /Applications/Macropad.app

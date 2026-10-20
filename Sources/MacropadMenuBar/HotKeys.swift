@@ -89,13 +89,13 @@ enum CommandRunner {
         case .openApp:
             let url = URL(fileURLWithPath: value)
             guard FileManager.default.fileExists(atPath: url.path) else {
-                throw CommandError("App não encontrado: \(value)")
+                throw CommandError(L("App não encontrado: %@", value))
             }
             let configuration = NSWorkspace.OpenConfiguration()
             configuration.activates = true
             NSWorkspace.shared.openApplication(at: url, configuration: configuration)
         case .openURL:
-            guard let url = URL(string: value) else { throw CommandError("Link inválido: \(value)") }
+            guard let url = URL(string: value) else { throw CommandError(L("Link inválido: %@", value)) }
             NSWorkspace.shared.open(url)
         case .shell:
             try launch("/bin/zsh", ["-lc", value])

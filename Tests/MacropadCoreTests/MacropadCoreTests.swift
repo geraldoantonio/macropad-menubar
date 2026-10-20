@@ -147,6 +147,9 @@ final class LayoutTests: XCTestCase {
 }
 
 final class DisplayTests: XCTestCase {
+    override func setUp() { L10n.override = .pt }
+    override func tearDown() { L10n.override = nil }
+
     func testLabels() throws {
         XCTAssertEqual(try Action(parsing: "shift+cmd+4").displayLabel, "⇧⌘4")
         XCTAssertEqual(try Action(parsing: "opt+p, left").displayLabel, "⌥P ←")
@@ -232,5 +235,49 @@ final class AppConfigTests: XCTestCase {
         XCTAssertTrue(Command(kind: .openURL, value: "https://github.com/x").isValid)
         XCTAssertEqual(Command(kind: .openURL, value: "https://github.com/x").label, "github.com")
         XCTAssertEqual(Command(kind: .shortcut, value: "Modo foco").label, "Modo foco")
+    }
+}
+
+final class L10nTests: XCTestCase {
+    override func tearDown() { L10n.override = nil }
+
+    func testTranslateAndFill() {
+        XCTAssertEqual(L10n.translate("Tecla %@", .pt, ["3"]), "Tecla 3")
+        XCTAssertEqual(L10n.translate("Tecla %@", .en, ["3"]), "Key 3")
+        XCTAssertEqual(L10n.translate("Tecla %@", .es, ["3"]), "Tecla 3")
+        XCTAssertEqual(L10n.translate("Gravar no pad", .en, []), "Write to pad")
+        XCTAssertEqual(L10n.translate("texto sem tradução", .en, []), "texto sem tradução")
+        // Arguments with % can't break formatting.
+        XCTAssertEqual(L10n.translate("Em uso: %@", .en, ["100%@ %d"]), "In use: 100%@ %d")
+        XCTAssertEqual(L10n.translate("%@ abre “%@” (envia %@)", .es, ["Tecla 1", "Safari", "⌘1"]),
+                       "Tecla 1 abre “Safari” (envía ⌘1)")
+    }
+
+    func testOverrideSwitchesEverything() {
+        L10n.override = .en
+        XCTAssertEqual(Slot.knobPress.title, "Knob press")
+        XCTAssertEqual(Preset.media.displayName, "Media")
+        XCTAssertEqual(try Action(parsing: "volume-up").displayLabel, "Vol +")
+        XCTAssertThrowsError(try Action(parsing: "")) { XCTAssertEqual($0.localizedDescription, "The action is empty") }
+        L10n.override = .es
+        XCTAssertEqual(Action.mouseTitle("right-click"), "Clic derecho")
+        XCTAssertEqual(Preset.media.id, "builtin:Mídia", "ids must not depend on the language")
+    }
+
+    func testTablesHaveTheSameKeys() {
+        XCTAssertEqual(L10n.keys.en, L10n.keys.es)
+    }
+
+    func testConfigKeepsLanguageAndOldFilesLoad() throws {
+        var config = AppConfig()
+        config.language = .es
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".json")
+        try config.save(to: url)
+        XCTAssertEqual(AppConfig.load(from: url).language, .es)
+        // A file from an older version (no "language", no "rules") still loads.
+        try Data(#"{"autoSwitch": true, "commands": {}}"#.utf8).write(to: url)
+        let old = AppConfig.load(from: url)
+        XCTAssertTrue(old.autoSwitch)
+        XCTAssertNil(old.language)
     }
 }

@@ -89,7 +89,7 @@ struct SlotEditor: View {
                 Spacer()
             }
             Picker("Tipo", selection: $kind) {
-                ForEach(Kind.allCases) { Text($0.rawValue).tag($0) }
+                ForEach(Kind.allCases) { Text(L($0.rawValue)).tag($0) }
             }
             .pickerStyle(.segmented)
             .labelsHidden()
@@ -100,13 +100,13 @@ struct SlotEditor: View {
             case .mouse: mouseEditor
             case .program: programEditor
             case .none:
-                Text("A tecla não faz nada.").font(.caption).foregroundStyle(.secondary)
+                Text(L("A tecla não faz nada.")).font(.caption).foregroundStyle(.secondary)
             }
 
             HStack {
                 validation
                 Spacer()
-                Button(kind == .none ? "Limpar no pad" : "Gravar no pad") {
+                Button(kind == .none ? L("Limpar no pad") : L("Gravar no pad")) {
                     recorder.stop()
                     if kind == .program { model.setCommand(slot, command) }
                     else if let text = actionText { model.set(slot, to: text) } else { model.clear(slot) }
@@ -132,21 +132,21 @@ struct SlotEditor: View {
     private var keysEditor: some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack {
-                TextField("ex.: shift+cmd+4  ou  cmd+a, cmd+c", text: $keysText)
+                TextField(L("ex.: shift+cmd+4  ou  cmd+a, cmd+c"), text: $keysText)
                     .textFieldStyle(.roundedBorder)
                     .font(.system(.body, design: .monospaced))
                     .disabled(recorder.isRecording)
                 Button {
                     if recorder.isRecording { recorder.stop() } else { startRecording() }
                 } label: {
-                    Label(recorder.isRecording ? "Parar" : "Gravar",
+                    Label(recorder.isRecording ? L("Parar") : L("Gravar"),
                           systemImage: recorder.isRecording ? "stop.circle.fill" : "record.circle")
                 }
                 .foregroundStyle(recorder.isRecording ? .red : .primary)
-                .help("Aperte o atalho no teclado; cada aperto vira um passo (até \(Action.maxSteps))")
+                .help(L("Aperte o atalho no teclado; cada aperto vira um passo (até %@)", String(Action.maxSteps)))
             }
             Text(recorder.isRecording
-                 ? "Gravando… aperte até \(Action.maxSteps) atalhos (\(recordedSteps)/\(Action.maxSteps)). Atalhos do sistema, como ⇧⌘4, precisam ser digitados."
+                 ? L("Gravando… aperte até %@ atalhos (%@/%@). Atalhos do sistema, como ⇧⌘4, precisam ser digitados.", String(Action.maxSteps), String(recordedSteps), String(Action.maxSteps))
                  : "Modificadores: ctrl, opt, shift, cmd (+ r para o lado direito). Separe passos de uma sequência com vírgula.")
                 .font(.caption2)
                 .foregroundStyle(recorder.isRecording ? .red : .secondary)
@@ -155,22 +155,22 @@ struct SlotEditor: View {
     }
 
     private var mediaEditor: some View {
-        Picker("Tecla de mídia", selection: $media) {
+        Picker(L("Tecla de mídia"), selection: $media) {
             ForEach(Keys.media.map(\.name), id: \.self) { name in
-                Text(Action.mediaTitles[name] ?? name).tag(name)
+                Text(Action.mediaTitle(name)).tag(name)
             }
         }
     }
 
     private var mouseEditor: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Picker("Ação do mouse", selection: $mouse) {
+            Picker(L("Ação do mouse"), selection: $mouse) {
                 ForEach(Keys.mouse.map(\.name), id: \.self) { name in
-                    Text(Action.mouseTitles[name] ?? name).tag(name)
+                    Text(Action.mouseTitle(name)).tag(name)
                 }
             }
             HStack(spacing: 10) {
-                Text("Segurando:").font(.caption).foregroundStyle(.secondary)
+                Text(L("Segurando:")).font(.caption).foregroundStyle(.secondary)
                 ForEach([("ctrl", "⌃ ctrl"), ("opt", "⌥ opt"), ("shift", "⇧ shift"), ("cmd", "⌘ cmd")], id: \.0) { name, title in
                     Toggle(title, isOn: Binding(
                         get: { mouseMods.contains(name) },
@@ -186,7 +186,7 @@ struct SlotEditor: View {
         if kind == .program {
             if let trigger = model.layout.text(layer: layer, slot: slot), initialCommand != nil, command == initialCommand,
                let action = try? Action(parsing: trigger) {
-                Label("A tecla envia \(action.displayLabel)", systemImage: "keyboard")
+                Label(L("A tecla envia %@", action.displayLabel), systemImage: "keyboard")
                     .font(.caption).foregroundStyle(.secondary)
             } else {
                 EmptyView()
@@ -203,7 +203,7 @@ struct SlotEditor: View {
                 Image(systemName: action.usesUnverifiedKeys ? "exclamationmark.triangle" : "checkmark")
                     .foregroundStyle(action.usesUnverifiedKeys ? .orange : .green)
                 Text(action.usesUnverifiedKeys
-                     ? "\(action.canonical) — o firmware pode não enviar esta tecla"
+                     ? action.canonical + L(" — o firmware pode não enviar esta tecla")
                      : action.canonical)
                     .font(.caption.monospaced())
                     .lineLimit(2)
@@ -220,11 +220,11 @@ struct SlotEditor: View {
 
     private var programEditor: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Picker("Ação", selection: $commandKind) {
-                Text("Abrir app").tag(Command.Kind.openApp)
-                Text("Abrir link ou arquivo").tag(Command.Kind.openURL)
-                Text("Executar script (zsh)").tag(Command.Kind.shell)
-                Text("Rodar atalho do app Atalhos").tag(Command.Kind.shortcut)
+            Picker(L("Ação"), selection: $commandKind) {
+                Text(L("Abrir app")).tag(Command.Kind.openApp)
+                Text(L("Abrir link ou arquivo")).tag(Command.Kind.openURL)
+                Text(L("Executar script (zsh)")).tag(Command.Kind.shell)
+                Text(L("Rodar atalho do app Atalhos")).tag(Command.Kind.shortcut)
             }
             .labelsHidden()
             .onChange(of: commandKind) { _ in commandValue = "" }
@@ -233,32 +233,32 @@ struct SlotEditor: View {
             case .openApp:
                 HStack {
                     if commandValue.isEmpty {
-                        Text("Nenhum app escolhido").foregroundStyle(.secondary)
+                        Text(L("Nenhum app escolhido")).foregroundStyle(.secondary)
                     } else {
                         Image(nsImage: NSWorkspace.shared.icon(forFile: commandValue))
                             .resizable().frame(width: 18, height: 18)
                         Text(Command(kind: .openApp, value: commandValue).label).lineLimit(1)
                     }
                     Spacer()
-                    AppPickerMenu(onPick: { commandValue = $0.path }) { Text("Escolher…") }
+                    AppPickerMenu(onPick: { commandValue = $0.path }) { Text(L("Escolher…")) }
                         .fixedSize()
                 }
             case .openURL:
-                TextField("https://… , obsidian://… ou file:///…", text: $commandValue)
+                TextField(L("https://… , obsidian://… ou file:///…"), text: $commandValue)
                     .textFieldStyle(.roundedBorder)
             case .shell:
-                TextField("ex.: open -a Terminal ~/projeto && say pronto", text: $commandValue, axis: .vertical)
+                TextField(L("ex.: open -a Terminal ~/projeto && say pronto"), text: $commandValue, axis: .vertical)
                     .textFieldStyle(.roundedBorder)
                     .font(.system(.body, design: .monospaced))
                     .lineLimit(1...4)
             case .shortcut:
-                TextField("Nome do atalho, ex.: Modo foco", text: $commandValue)
+                TextField(L("Nome do atalho, ex.: Modo foco"), text: $commandValue)
                     .textFieldStyle(.roundedBorder)
             }
 
             Text(commandKind == .shell
-                 ? "Roda no zsh com seu PATH de login. A saída vai para ~/Library/Logs/Macropad.log. O app Macropad precisa estar aberto."
-                 : "O pad envia um atalho reservado (⌃⌥⇧⌘ + tecla) e o Macropad faz o resto. O app precisa estar aberto.")
+                 ? L("Roda no zsh com seu PATH de login. A saída vai para ~/Library/Logs/Macropad.log. O app Macropad precisa estar aberto.")
+                 : L("O pad envia um atalho reservado (⌃⌥⇧⌘ + tecla) e o Macropad faz o resto. O app precisa estar aberto."))
                 .font(.caption2)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)

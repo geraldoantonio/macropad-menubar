@@ -12,11 +12,11 @@ enum PadUSBError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .notConnected:
-            "Macropad não encontrado (USB 1189:8890). Ele está conectado?"
+            L("Macropad não encontrado (USB 1189:8890). Ele está conectado?")
         case .noConfigEndpoint(let details):
-            "Não achei o canal de configuração do pad." + (details.isEmpty ? "" : "\n" + details.joined(separator: "\n"))
+            L("Não achei o canal de configuração do pad.") + (details.isEmpty ? "" : "\n" + details.joined(separator: "\n"))
         case .writeFailed(let detail):
-            "Falha ao gravar no pad: \(detail). Tente de novo."
+            L("Falha ao gravar no pad: %@. Tente de novo.", detail)
         }
     }
 }

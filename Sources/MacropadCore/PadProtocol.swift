@@ -24,10 +24,10 @@ public enum Slot: String, CaseIterable, Identifiable, Sendable {
 
     public var title: String {
         switch self {
-        case .key1, .key2, .key3, .key4, .key5, .key6: "Tecla \(rawValue.dropFirst(3))"
-        case .knobLeft: "Knob ↺ esquerda"
-        case .knobPress: "Knob pressionar"
-        case .knobRight: "Knob ↻ direita"
+        case .key1, .key2, .key3, .key4, .key5, .key6: L("Tecla %@", String(rawValue.dropFirst(3)))
+        case .knobLeft: L("Knob ↺ esquerda")
+        case .knobPress: L("Knob pressionar")
+        case .knobRight: L("Knob ↻ direita")
         }
     }
 }

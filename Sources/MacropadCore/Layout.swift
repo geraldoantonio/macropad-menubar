@@ -63,7 +63,7 @@ extension Layout {
         guard FileManager.default.fileExists(atPath: url.path) else { return Layout() }
         let text: String
         do { text = try String(contentsOf: url, encoding: .utf8) } catch {
-            throw LayoutError(["\(url.path): não foi possível ler (\(error.localizedDescription))"])
+            throw LayoutError([L("%@: não foi possível ler (%@)", url.path, error.localizedDescription)])
         }
         return try parse(yaml: text, source: url.lastPathComponent)
     }
@@ -71,16 +71,16 @@ extension Layout {
     public static func parse(yaml text: String, source: String = "layout") throws -> Layout {
         let loaded: Any?
         do { loaded = try Yams.load(yaml: text) } catch {
-            throw LayoutError(["\(source): YAML inválido: \(error)"])
+            throw LayoutError([L("%@: YAML inválido: %@", source, "\(error)")])
         }
         guard let root = loaded else { return Layout() }
         guard let data = root as? [AnyHashable: Any] else {
-            throw LayoutError(["\(source): esperado um mapa com 'led' e 'layers'"])
+            throw LayoutError([L("%@: esperado um mapa com 'led' e 'layers'", source)])
         }
 
         var problems: [String] = []
         for key in data.keys where !["led", "layers"].contains(key as? String ?? "") {
-            problems.append("\(key): chave desconhecida")
+            problems.append(L("%@: chave desconhecida", "\(key)"))
         }
 
         var led: Int?
@@ -108,13 +108,13 @@ extension Layout {
             for (rawSlot, rawText) in slots {
                 let where_ = "layers.\(layer).\(rawSlot)"
                 guard let name = rawSlot as? String, let slot = Slot(rawValue: name) else {
-                    problems.append("\(where_): slot desconhecido")
+                    problems.append(L("%@: slot desconhecido", where_))
                     continue
                 }
                 let text: String
                 if let s = rawText as? String { text = s }
                 else if !(rawText is Bool), let n = rawText as? Int { text = String(n) }
-                else { problems.append("\(where_): a ação deve ser texto"); continue }
+                else { problems.append(L("%@: a ação deve ser texto", where_)); continue }
                 let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
                 do { _ = try Action(parsing: trimmed) } catch {
                     problems.append("\(where_): \(error.localizedDescription)")

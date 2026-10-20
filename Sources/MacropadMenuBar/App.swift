@@ -11,7 +11,7 @@ struct MacropadMenuBarApp: App {
                 .environmentObject(model)
         } label: {
             Image(systemName: model.connected ? "square.grid.3x2.fill" : "square.grid.3x2")
-                .accessibilityLabel(model.connected ? "Macropad conectado" : "Macropad desconectado")
+                .accessibilityLabel(model.connected ? L("Macropad conectado") : L("Macropad desconectado"))
         }
         .menuBarExtraStyle(.window)
     }

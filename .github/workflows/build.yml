@@ -20,6 +20,9 @@ jobs:
       - name: Swift version
         run: swift --version
 
+      - name: Translations complete (pt/en/es)
+        run: python3 scripts/check-l10n.py
+
       - name: Test (protocol checked against the Python CLI's packets)
         run: swift test
 

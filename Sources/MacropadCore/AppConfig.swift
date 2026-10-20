@@ -30,7 +30,7 @@ public struct Command: Codable, Equatable, Hashable, Sendable {
         case .openURL:
             return URL(string: value)?.host ?? value
         case .shell:
-            return "Script"
+            return L("Script")
         case .shortcut:
             return value
         }
@@ -73,8 +73,20 @@ public struct AppConfig: Codable, Equatable, Sendable {
     public var rules: [AutoRule] = []
     /// Preset for apps without a rule; nil leaves the pad as it is.
     public var defaultPreset: String?
+    /// App language; nil follows macOS.
+    public var language: Language?
 
     public init() {}
+
+    /// Missing keys fall back to defaults, so files from older versions keep loading.
+    public init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        commands = try c.decodeIfPresent([String: Command].self, forKey: .commands) ?? [:]
+        autoSwitch = try c.decodeIfPresent(Bool.self, forKey: .autoSwitch) ?? false
+        rules = try c.decodeIfPresent([AutoRule].self, forKey: .rules) ?? []
+        defaultPreset = try c.decodeIfPresent(String.self, forKey: .defaultPreset)
+        language = try? c.decodeIfPresent(Language.self, forKey: .language)
+    }
 
     public static var defaultURL: URL {
         FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(".config/macropad/app.json")

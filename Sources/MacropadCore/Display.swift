@@ -4,10 +4,10 @@ extension Action {
         switch self {
         case .media(let code):
             let name = Keys.mediaName(for: code) ?? ""
-            return Action.mediaLabels[name] ?? name
+            return Action.mediaLabels[name].map { L($0) } ?? name
         case .mouse(let buttons, let wheel, let mods):
             let name = Keys.mouseName(buttons: buttons, wheel: wheel) ?? ""
-            return Action.modifierGlyphs(mods) + (Action.mouseLabels[name] ?? name)
+            return Action.modifierGlyphs(mods) + (Action.mouseLabels[name].map { L($0) } ?? name)
         case .keys(let steps):
             if steps == Action.empty.steps { return "" }
             return steps.map { step in
@@ -57,17 +57,22 @@ extension Action {
         "scroll-up": "Rolar ↑", "scroll-down": "Rolar ↓",
     ]
 
-    /// Portuguese names for the media/mouse pickers.
-    public static let mediaTitles: [String: String] = [
+    /// Names for the media/mouse pickers (Portuguese keys; translate with `L`).
+    static let mediaTitleKeys: [String: String] = [
         "play": "Play/Pausa", "next": "Próxima faixa", "prev": "Faixa anterior", "stop": "Parar",
         "mute": "Mudo", "volume-up": "Volume +", "volume-down": "Volume −",
         "brightness-up": "Brilho +", "brightness-down": "Brilho −",
     ]
 
-    public static let mouseTitles: [String: String] = [
+    static let mouseTitleKeys: [String: String] = [
         "click": "Clique esquerdo", "right-click": "Clique direito", "middle-click": "Clique do meio",
         "scroll-up": "Rolar para cima", "scroll-down": "Rolar para baixo",
     ]
+}
+
+extension Action {
+    public static func mediaTitle(_ name: String) -> String { mediaTitleKeys[name].map { L($0) } ?? name }
+    public static func mouseTitle(_ name: String) -> String { mouseTitleKeys[name].map { L($0) } ?? name }
 }
 
 /// macOS virtual key codes (Carbon `kVK_*`, physical positions) -> HID key names,

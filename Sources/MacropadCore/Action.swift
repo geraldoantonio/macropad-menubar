@@ -40,12 +40,12 @@ extension Action {
     public init(parsing text: String) throws {
         let rawSteps = text.split(separator: ",", omittingEmptySubsequences: false)
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-        if rawSteps.allSatisfy(\.isEmpty) { throw ActionError("A ação está vazia") }
+        if rawSteps.allSatisfy(\.isEmpty) { throw ActionError(L("A ação está vazia")) }
         if rawSteps.contains(where: \.isEmpty) {
-            throw ActionError("Passo vazio na sequência “\(text.trimmingCharacters(in: .whitespaces))”")
+            throw ActionError(L("Passo vazio na sequência “%@”", text.trimmingCharacters(in: .whitespaces)))
         }
         if rawSteps.count > Action.maxSteps {
-            throw ActionError("A sequência tem \(rawSteps.count) passos; o pad toca no máximo \(Action.maxSteps)")
+            throw ActionError(L("A sequência tem %@ passos; o pad toca no máximo %@", String(rawSteps.count), String(Action.maxSteps)))
         }
 
         let parsed = try rawSteps.map(Action.parseStep)
@@ -53,7 +53,7 @@ extension Action {
             var strokes: [Keystroke] = []
             for step in parsed {
                 guard case .keys(let s) = step else {
-                    throw ActionError("Mídia e mouse não podem fazer parte de uma sequência")
+                    throw ActionError(L("Mídia e mouse não podem fazer parte de uma sequência"))
                 }
                 strokes += s
             }
@@ -68,7 +68,7 @@ extension Action {
         let tokens = step.split(separator: "+", omittingEmptySubsequences: false)
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() }
         if tokens.contains(where: \.isEmpty) {
-            throw ActionError("Nome de tecla vazio em “\(step)” (“+” é separador; use shift+equal)")
+            throw ActionError(L("Nome de tecla vazio em “%@” (“+” é separador; use shift+equal)", step))
         }
 
         var mods: UInt8 = 0
@@ -79,13 +79,13 @@ extension Action {
         }
 
         if others.count > 1 {
-            throw ActionError("Só uma tecla comum por passo; “\(step)” tem \(others.joined(separator: ", "))")
+            throw ActionError(L("Só uma tecla comum por passo; “%@” tem %@", step, others.joined(separator: ", ")))
         }
         guard let token = others.first else { return .keys([Keystroke(mods: mods, code: 0)]) }
 
         let mediaName = Keys.mediaAliases[token] ?? token
         if let code = Keys.mediaCodes[mediaName] {
-            if mods != 0 { throw ActionError("A tecla de mídia “\(mediaName)” não aceita modificadores") }
+            if mods != 0 { throw ActionError(L("A tecla de mídia “%@” não aceita modificadores", mediaName)) }
             return .media(code: code)
         }
 
@@ -95,15 +95,15 @@ extension Action {
         }
 
         if let options = Keys.ambiguous[token] {
-            throw ActionError("“\(token)” é ambíguo no Mac; use \(options.joined(separator: " ou "))",
+            throw ActionError(L("“%@” é ambíguo no Mac; use %@", token, options.joined(separator: L(" ou "))),
                               suggestions: options)
         }
 
         let keyName = Keys.keyAliases[token] ?? token
         guard let code = Keys.keyCodes[keyName] else {
             let suggestions = closeMatches(token, in: Keys.allNames)
-            let hint = suggestions.isEmpty ? "" : "; você quis dizer \(suggestions.joined(separator: " ou "))?"
-            throw ActionError("Tecla desconhecida “\(token)”\(hint)", suggestions: suggestions)
+            let hint = suggestions.isEmpty ? "" : L("; você quis dizer %@?", suggestions.joined(separator: L(" ou ")))
+            throw ActionError(L("Tecla desconhecida “%@”", token) + hint, suggestions: suggestions)
         }
         return .keys([Keystroke(mods: mods, code: code)])
     }

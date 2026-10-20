@@ -28,6 +28,9 @@ Requer macOS 13 ou mais novo.
 O ícone de grade aparece na barra de menus, cheio quando o pad está conectado. Para abrir sozinho
 ao ligar o Mac: ⚙︎ → **Abrir ao iniciar sessão**.
 
+**Idioma:** português, inglês ou espanhol. Segue o idioma do macOS (inglês para os demais);
+para escolher outro, ⚙︎ → **Idioma**.
+
 **Atualizar:** ⚙︎ → **Atualizar Macropad…** baixa a versão mais nova, troca o app e reabre.
 A versão instalada aparece no cabeçalho do painel.
 
@@ -142,6 +145,7 @@ Tests/                   testes; Fixtures/ tem pacotes gerados pelo CLI Python
 ```
 
 ```bash
+python3 scripts/check-l10n.py       # todo texto L("…") tem tradução em inglês e espanhol
 swift test                          # confere byte a byte com os pacotes do CLI Python
 swift run MacropadMenuBar           # roda sem empacotar
 ./scripts/build-app.sh --install    # empacota, copia para /Applications e abre

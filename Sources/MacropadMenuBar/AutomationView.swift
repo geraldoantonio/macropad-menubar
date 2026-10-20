@@ -17,26 +17,26 @@ struct AutomationView: View {
                         Image(systemName: "chevron.right")
                             .font(.caption.weight(.semibold))
                             .rotationEffect(.degrees(expanded ? 90 : 0))
-                        Label("Preset por app", systemImage: "macwindow.on.rectangle").font(.subheadline)
+                        Label(L("Preset por app"), systemImage: "macwindow.on.rectangle").font(.subheadline)
                     }
                     .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
                 Spacer()
                 if model.config.autoSwitch, let active = model.preset(id: model.activePresetID) {
-                    Text(active.name).font(.caption).foregroundStyle(.secondary).lineLimit(1)
+                    Text(active.displayName).font(.caption).foregroundStyle(.secondary).lineLimit(1)
                 }
-                Toggle("Automático", isOn: Binding(get: { model.config.autoSwitch }, set: { model.setAutoSwitch($0) }))
+                Toggle(L("Automático"), isOn: Binding(get: { model.config.autoSwitch }, set: { model.setAutoSwitch($0) }))
                     .toggleStyle(.switch)
                     .controlSize(.small)
                     .labelsHidden()
-                    .help("Troca o preset do pad sozinho quando você muda de app")
+                    .help(L("Troca o preset do pad sozinho quando você muda de app"))
             }
 
             if expanded {
                 VStack(alignment: .leading, spacing: 6) {
                     if model.config.rules.isEmpty {
-                        Text("Nenhum app ainda. Adicione um app e escolha o preset que ele usa.")
+                        Text(L("Nenhum app ainda. Adicione um app e escolha o preset que ele usa."))
                             .font(.caption).foregroundStyle(.secondary)
                     }
                     ForEach(model.config.rules) { rule in
@@ -44,7 +44,7 @@ struct AutomationView: View {
                     }
                     HStack {
                         Image(systemName: "square.dashed").frame(width: 18).foregroundStyle(.secondary)
-                        Text("Outros apps").font(.callout)
+                        Text(L("Outros apps")).font(.callout)
                         Spacer()
                         PresetPicker(selection: Binding(
                             get: { model.config.defaultPreset },
@@ -55,15 +55,15 @@ struct AutomationView: View {
                             guard let bundleID = app.bundleID else { return }
                             model.setRule(bundleID: bundleID, appName: app.name,
                                           presetID: model.activePresetID ?? Preset.vibeCoder.id)
-                        }) { Label("Adicionar app", systemImage: "plus") }
+                        }) { Label(L("Adicionar app"), systemImage: "plus") }
                             .fixedSize()
                         Spacer()
                         if let front = model.frontAppName {
-                            Text("Em uso: \(front)").font(.caption).foregroundStyle(.secondary)
+                            Text(L("Em uso: %@", front)).font(.caption).foregroundStyle(.secondary)
                         }
                     }
                     .controlSize(.small)
-                    Text("Edições feitas aqui valem até a próxima troca de app. Para guardar, salve como preset (⋯ → Salvar) com o mesmo nome.")
+                    Text(L("Edições feitas aqui valem até a próxima troca de app. Para guardar, salve como preset (⋯ → Salvar) com o mesmo nome."))
                         .font(.caption2).foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
@@ -88,7 +88,7 @@ private struct RuleRow: View {
                 allowNone: false)
             Button { model.removeRule(bundleID: rule.bundleID) } label: { Image(systemName: "minus.circle") }
                 .buttonStyle(.borderless)
-                .help("Remover")
+                .help(L("Remover"))
         }
     }
 }
@@ -99,10 +99,10 @@ private struct PresetPicker: View {
     let allowNone: Bool
 
     var body: some View {
-        Picker("Preset", selection: $selection) {
-            if allowNone { Text("Não mudar").tag(String?.none) }
+        Picker(L("Preset"), selection: $selection) {
+            if allowNone { Text(L("Não mudar")).tag(String?.none) }
             ForEach(model.allPresets) { preset in
-                Text(preset.name).tag(Optional(preset.id))
+                Text(preset.displayName).tag(Optional(preset.id))
             }
         }
         .labelsHidden()
