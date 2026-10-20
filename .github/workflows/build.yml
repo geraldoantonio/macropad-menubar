@@ -3,7 +3,10 @@ name: build
 on:
   push:
     branches: [main]
+    # Documentation-only changes don't build or publish a release.
+    paths-ignore: ["**.md", "docs/**", "LICENSE"]
   pull_request:
+    paths-ignore: ["**.md", "docs/**", "LICENSE"]
   workflow_dispatch:
 
 permissions:

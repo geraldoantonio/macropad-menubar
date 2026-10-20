@@ -151,9 +151,10 @@ swift run MacropadMenuBar           # roda sem empacotar
 ./scripts/build-app.sh --install    # empacota, copia para /Applications e abre
 ```
 
-Precisa das ferramentas do Xcode (`xcode-select --install`). Cada push em `main` roda os testes e
-o build no GitHub Actions e publica uma release com o `Macropad.zip` universal (Apple Silicon e
-Intel) — é dela que o botão **Atualizar** baixa.
+Precisa das ferramentas do Xcode (`xcode-select --install`). Cada push em `main` que muda código
+roda os testes e o build no GitHub Actions e publica uma release com o `Macropad.zip` universal
+(Apple Silicon e Intel) — é dela que o botão **Atualizar** baixa. Mudanças só em documentação
+(`*.md`, `docs/`, `LICENSE`) não geram build nem release.
 
 Os testes comparam os pacotes USB com os gerados pelo CLI original (`macropad … --dry-run --json`),
 então qualquer divergência do protocolo quebra o build. O protocolo está documentado em
