@@ -75,9 +75,16 @@ enum ScreenshotMode {
         RunLoop.main.run(until: Date().addingTimeInterval(0.8))
         hosting.layoutSubtreeIfNeeded()
 
-        guard let rep = hosting.bitmapImageRepForCachingDisplay(in: hosting.bounds) else {
+        // Retina (2x) regardless of the runner's display.
+        let scale: CGFloat = 2
+        guard let rep = NSBitmapImageRep(bitmapDataPlanes: nil,
+                                         pixelsWide: Int(hosting.bounds.width * scale),
+                                         pixelsHigh: Int(hosting.bounds.height * scale),
+                                         bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false,
+                                         colorSpaceName: .deviceRGB, bytesPerRow: 0, bitsPerPixel: 0) else {
             throw CocoaError(.fileWriteUnknown)
         }
+        rep.size = hosting.bounds.size
         hosting.cacheDisplay(in: hosting.bounds, to: rep)
         guard let png = rep.representation(using: .png, properties: [:]) else { throw CocoaError(.fileWriteUnknown) }
         try png.write(to: url)

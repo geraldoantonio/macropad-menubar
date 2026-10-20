@@ -14,12 +14,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build
-        run: swift build -c release --product MacropadMenuBar
+      # Packaged like a release, so the header shows the published version.
+      - name: Build Macropad.app
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          export VERSION="$(gh release view --json tagName -q .tagName | sed 's/^v//')"
+          ./scripts/build-app.sh
 
       - name: Render
         run: |
-          BIN="$(swift build -c release --show-bin-path)/MacropadMenuBar"
+          BIN="$PWD/build/Macropad.app/Contents/MacOS/MacropadMenuBar"
           "$BIN" --screenshots "$PWD/docs/images" &
           PID=$!
           for i in $(seq 1 120); do kill -0 $PID 2>/dev/null || break; sleep 1; done
