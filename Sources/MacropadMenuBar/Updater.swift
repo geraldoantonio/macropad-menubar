@@ -15,8 +15,11 @@ enum Updater {
         Bundle.main.object(forInfoDictionaryKey: "MacropadCommit") as? String
     }
 
+    static var version: String {
+        Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "dev"
+    }
+
     static var versionDescription: String {
-        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "dev"
         if let commit = currentCommit, !commit.isEmpty { return "\(version) (\(commit.prefix(7)))" }
         return version
     }

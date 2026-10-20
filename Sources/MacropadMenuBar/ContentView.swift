@@ -45,7 +45,9 @@ private struct HeaderView: View {
                 .foregroundStyle(.tint)
             VStack(alignment: .leading, spacing: 1) {
                 Text("Macropad").font(.headline)
-                Text("6 teclas + knob · USB 1189:8890").font(.caption).foregroundStyle(.secondary)
+                Text("6 teclas + knob · v\(Updater.version)")
+                    .font(.caption).foregroundStyle(.secondary)
+                    .help("Versão \(Updater.versionDescription) · USB 1189:8890")
             }
             Spacer()
             if model.busy { ProgressView().controlSize(.small) }
