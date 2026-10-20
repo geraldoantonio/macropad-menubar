@@ -38,7 +38,8 @@ enum Updater {
         if let latest = lines.first(where: { $0.hasPrefix("LATEST ") }) {
             let parts = latest.split(separator: " ").map(String.init)
             let commit = parts.count > 1 ? parts[1] : ""
-            if let current = currentCommit, !current.isEmpty, commit.hasPrefix(current) || current.hasPrefix(commit) {
+            guard commit.count >= 7 else { return .failed("resposta inesperada do GitHub: \(latest)") }
+            if let current = currentCommit, current.count >= 7, commit.hasPrefix(current) || current.hasPrefix(commit) {
                 return .upToDate
             }
             return .available(commit: commit)
@@ -83,13 +84,19 @@ enum Updater {
     private static let script = #"""
     set -u
     MODE="$1"; REPO="$2"; APP_PID="$3"
-    BASE="https://github.com/$REPO/releases/latest/download"
     fail() { echo "ERRO $*"; exit 1; }
 
+    # The API answers with the newest tag right away; releases/latest/download can lag a few
+    # minutes behind a new release. Assets are then fetched by tag, which never changes.
+    TAG=$(curl -fsSL --max-time 20 -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$REPO/releases/latest" \
+          | grep -m1 '"tag_name"' | sed -E 's/.*"tag_name": *"([^"]+)".*/\1/')
+    [ -n "$TAG" ] || fail "não consegui consultar o GitHub (sem internet?)"
+    BASE="https://github.com/$REPO/releases/download/$TAG"
     LATEST=$(curl -fsSL --max-time 20 "$BASE/commit.txt" | tr -d '[:space:]') \
-      || fail "não consegui consultar o GitHub (sem internet, ou o repositório ainda é privado)"
+      || fail "a release $TAG não tem commit.txt"
     [ -n "$LATEST" ] || fail "a release mais nova não tem commit.txt"
-    echo "LATEST $LATEST release"
+    echo "LATEST $LATEST $TAG"
     [ "$MODE" = check ] && exit 0
 
     WORK="$(mktemp -d /tmp/macropad-update.XXXXXX)"
