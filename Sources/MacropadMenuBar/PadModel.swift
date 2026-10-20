@@ -32,6 +32,10 @@ final class PadModel: ObservableObject {
     @Published private(set) var updating = false
     /// Chosen language (nil = follow macOS).
     @Published private(set) var language: Language?
+    /// "Preset por app" section open.
+    @Published var automationExpanded = false
+    /// Screenshot mode: sample data, no USB, files or global shortcuts.
+    let isDemo: Bool
 
     let layoutURL = Layout.defaultURL
     private let presetStore = PresetStore()
@@ -47,7 +51,9 @@ final class PadModel: ObservableObject {
         var quiet: Bool
     }
 
-    init() {
+    init(demo: Bool = false) {
+        isDemo = demo
+        if demo { return }
         language = config.language
         L10n.override = config.language
         reload()
@@ -69,12 +75,26 @@ final class PadModel: ObservableObject {
 
     /// Re-reads the layout file (the CLI may have changed it) and the user presets.
     func reload() {
+        guard !isDemo else { return }
         do {
             layout = try Layout.load(from: layoutURL)
         } catch {
             show(L("Layout em %@ com problemas:", layoutURL.path) + "\n" + error.localizedDescription, error: true)
         }
         userPresets = presetStore.userPresets()
+    }
+
+    /// Fills the model with sample data for screenshots (see ScreenshotMode).
+    func loadDemo(layout: Layout, config: AppConfig, selected: Slot?, message: Message?,
+                  frontApp: String?, activePreset: String?, expanded: Bool) {
+        self.layout = layout
+        self.config = config
+        self.connected = true
+        self.selectedSlot = selected
+        self.message = message
+        self.frontAppName = frontApp
+        self.activePresetID = activePreset
+        self.automationExpanded = expanded
     }
 
     // MARK: Writing to the pad

@@ -5,18 +5,17 @@ import SwiftUI
 /// "Trocar preset pelo app em uso": rules app -> preset, plus a default for the other apps.
 struct AutomationView: View {
     @EnvironmentObject private var model: PadModel
-    @State private var expanded = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Button {
-                    withAnimation(.easeInOut(duration: 0.15)) { expanded.toggle() }
+                    withAnimation(.easeInOut(duration: 0.15)) { model.automationExpanded.toggle() }
                 } label: {
                     HStack(spacing: 6) {
                         Image(systemName: "chevron.right")
                             .font(.caption.weight(.semibold))
-                            .rotationEffect(.degrees(expanded ? 90 : 0))
+                            .rotationEffect(.degrees(model.automationExpanded ? 90 : 0))
                         Label(L("Preset por app"), systemImage: "macwindow.on.rectangle").font(.subheadline)
                     }
                     .contentShape(Rectangle())
@@ -33,7 +32,7 @@ struct AutomationView: View {
                     .help(L("Troca o preset do pad sozinho quando você muda de app"))
             }
 
-            if expanded {
+            if model.automationExpanded {
                 VStack(alignment: .leading, spacing: 6) {
                     if model.config.rules.isEmpty {
                         Text(L("Nenhum app ainda. Adicione um app e escolha o preset que ele usa."))
