@@ -1,0 +1,6148 @@
+{
+ "bind": [
+  {
+   "action": "cmd+c",
+   "canonical": "cmd+c",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030111010008",
+    "03011101010806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+c",
+   "canonical": "cmd+c",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030611010008",
+    "03061101010806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+c",
+   "canonical": "cmd+c",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d11010008",
+    "030d1101010806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+c",
+   "canonical": "cmd+c",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e11010008",
+    "030e1101010806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+c",
+   "canonical": "cmd+c",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f11010008",
+    "030f1101010806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+c",
+   "canonical": "cmd+c",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030121010008",
+    "03012101010806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+c",
+   "canonical": "cmd+c",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030621010008",
+    "03062101010806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+c",
+   "canonical": "cmd+c",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d21010008",
+    "030d2101010806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+c",
+   "canonical": "cmd+c",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e21010008",
+    "030e2101010806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+c",
+   "canonical": "cmd+c",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f21010008",
+    "030f2101010806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+c",
+   "canonical": "cmd+c",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030131010008",
+    "03013101010806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+c",
+   "canonical": "cmd+c",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030631010008",
+    "03063101010806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+c",
+   "canonical": "cmd+c",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d31010008",
+    "030d3101010806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+c",
+   "canonical": "cmd+c",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e31010008",
+    "030e3101010806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+c",
+   "canonical": "cmd+c",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f31010008",
+    "030f3101010806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+shift+4",
+   "canonical": "shift+cmd+4",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03011101000a",
+    "03011101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+shift+4",
+   "canonical": "shift+cmd+4",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03061101000a",
+    "03061101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+shift+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d1101000a",
+    "030d1101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+shift+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e1101000a",
+    "030e1101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+shift+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f1101000a",
+    "030f1101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+shift+4",
+   "canonical": "shift+cmd+4",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03012101000a",
+    "03012101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+shift+4",
+   "canonical": "shift+cmd+4",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03062101000a",
+    "03062101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+shift+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d2101000a",
+    "030d2101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+shift+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e2101000a",
+    "030e2101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+shift+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f2101000a",
+    "030f2101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+shift+4",
+   "canonical": "shift+cmd+4",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03013101000a",
+    "03013101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+shift+4",
+   "canonical": "shift+cmd+4",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03063101000a",
+    "03063101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+shift+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d3101000a",
+    "030d3101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+shift+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e3101000a",
+    "030e3101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+shift+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f3101000a",
+    "030f3101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+cmd+4",
+   "canonical": "shift+cmd+4",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03011101000a",
+    "03011101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+cmd+4",
+   "canonical": "shift+cmd+4",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03061101000a",
+    "03061101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+cmd+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d1101000a",
+    "030d1101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+cmd+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e1101000a",
+    "030e1101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+cmd+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f1101000a",
+    "030f1101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+cmd+4",
+   "canonical": "shift+cmd+4",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03012101000a",
+    "03012101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+cmd+4",
+   "canonical": "shift+cmd+4",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03062101000a",
+    "03062101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+cmd+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d2101000a",
+    "030d2101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+cmd+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e2101000a",
+    "030e2101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+cmd+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f2101000a",
+    "030f2101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+cmd+4",
+   "canonical": "shift+cmd+4",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03013101000a",
+    "03013101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+cmd+4",
+   "canonical": "shift+cmd+4",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03063101000a",
+    "03063101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+cmd+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d3101000a",
+    "030d3101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+cmd+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e3101000a",
+    "030e3101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+cmd+4",
+   "canonical": "shift+cmd+4",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f3101000a",
+    "030f3101010a21",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+a, cmd+c",
+   "canonical": "cmd+a, cmd+c",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030111020008",
+    "03011102010804",
+    "03011102020806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+a, cmd+c",
+   "canonical": "cmd+a, cmd+c",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030611020008",
+    "03061102010804",
+    "03061102020806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+a, cmd+c",
+   "canonical": "cmd+a, cmd+c",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d11020008",
+    "030d1102010804",
+    "030d1102020806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+a, cmd+c",
+   "canonical": "cmd+a, cmd+c",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e11020008",
+    "030e1102010804",
+    "030e1102020806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+a, cmd+c",
+   "canonical": "cmd+a, cmd+c",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f11020008",
+    "030f1102010804",
+    "030f1102020806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+a, cmd+c",
+   "canonical": "cmd+a, cmd+c",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030121020008",
+    "03012102010804",
+    "03012102020806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+a, cmd+c",
+   "canonical": "cmd+a, cmd+c",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030621020008",
+    "03062102010804",
+    "03062102020806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+a, cmd+c",
+   "canonical": "cmd+a, cmd+c",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d21020008",
+    "030d2102010804",
+    "030d2102020806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+a, cmd+c",
+   "canonical": "cmd+a, cmd+c",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e21020008",
+    "030e2102010804",
+    "030e2102020806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+a, cmd+c",
+   "canonical": "cmd+a, cmd+c",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f21020008",
+    "030f2102010804",
+    "030f2102020806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+a, cmd+c",
+   "canonical": "cmd+a, cmd+c",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030131020008",
+    "03013102010804",
+    "03013102020806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+a, cmd+c",
+   "canonical": "cmd+a, cmd+c",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030631020008",
+    "03063102010804",
+    "03063102020806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+a, cmd+c",
+   "canonical": "cmd+a, cmd+c",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d31020008",
+    "030d3102010804",
+    "030d3102020806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+a, cmd+c",
+   "canonical": "cmd+a, cmd+c",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e31020008",
+    "030e3102010804",
+    "030e3102020806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+a, cmd+c",
+   "canonical": "cmd+a, cmd+c",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f31020008",
+    "030f3102010804",
+    "030f3102020806",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "h, e, l, l, o",
+   "canonical": "h, e, l, l, o",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03011105",
+    "0301110501000b",
+    "03011105020008",
+    "0301110503000f",
+    "0301110504000f",
+    "03011105050012",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "h, e, l, l, o",
+   "canonical": "h, e, l, l, o",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03061105",
+    "0306110501000b",
+    "03061105020008",
+    "0306110503000f",
+    "0306110504000f",
+    "03061105050012",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "h, e, l, l, o",
+   "canonical": "h, e, l, l, o",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d1105",
+    "030d110501000b",
+    "030d1105020008",
+    "030d110503000f",
+    "030d110504000f",
+    "030d1105050012",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "h, e, l, l, o",
+   "canonical": "h, e, l, l, o",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e1105",
+    "030e110501000b",
+    "030e1105020008",
+    "030e110503000f",
+    "030e110504000f",
+    "030e1105050012",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "h, e, l, l, o",
+   "canonical": "h, e, l, l, o",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f1105",
+    "030f110501000b",
+    "030f1105020008",
+    "030f110503000f",
+    "030f110504000f",
+    "030f1105050012",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "h, e, l, l, o",
+   "canonical": "h, e, l, l, o",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03012105",
+    "0301210501000b",
+    "03012105020008",
+    "0301210503000f",
+    "0301210504000f",
+    "03012105050012",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "h, e, l, l, o",
+   "canonical": "h, e, l, l, o",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03062105",
+    "0306210501000b",
+    "03062105020008",
+    "0306210503000f",
+    "0306210504000f",
+    "03062105050012",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "h, e, l, l, o",
+   "canonical": "h, e, l, l, o",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d2105",
+    "030d210501000b",
+    "030d2105020008",
+    "030d210503000f",
+    "030d210504000f",
+    "030d2105050012",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "h, e, l, l, o",
+   "canonical": "h, e, l, l, o",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e2105",
+    "030e210501000b",
+    "030e2105020008",
+    "030e210503000f",
+    "030e210504000f",
+    "030e2105050012",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "h, e, l, l, o",
+   "canonical": "h, e, l, l, o",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f2105",
+    "030f210501000b",
+    "030f2105020008",
+    "030f210503000f",
+    "030f210504000f",
+    "030f2105050012",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "h, e, l, l, o",
+   "canonical": "h, e, l, l, o",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03013105",
+    "0301310501000b",
+    "03013105020008",
+    "0301310503000f",
+    "0301310504000f",
+    "03013105050012",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "h, e, l, l, o",
+   "canonical": "h, e, l, l, o",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03063105",
+    "0306310501000b",
+    "03063105020008",
+    "0306310503000f",
+    "0306310504000f",
+    "03063105050012",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "h, e, l, l, o",
+   "canonical": "h, e, l, l, o",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d3105",
+    "030d310501000b",
+    "030d3105020008",
+    "030d310503000f",
+    "030d310504000f",
+    "030d3105050012",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "h, e, l, l, o",
+   "canonical": "h, e, l, l, o",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e3105",
+    "030e310501000b",
+    "030e3105020008",
+    "030e310503000f",
+    "030e310504000f",
+    "030e3105050012",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "h, e, l, l, o",
+   "canonical": "h, e, l, l, o",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f3105",
+    "030f310501000b",
+    "030f3105020008",
+    "030f310503000f",
+    "030f310504000f",
+    "030f3105050012",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+h, i",
+   "canonical": "shift+h, i",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030111020002",
+    "0301110201020b",
+    "0301110202000c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+h, i",
+   "canonical": "shift+h, i",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030611020002",
+    "0306110201020b",
+    "0306110202000c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+h, i",
+   "canonical": "shift+h, i",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d11020002",
+    "030d110201020b",
+    "030d110202000c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+h, i",
+   "canonical": "shift+h, i",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e11020002",
+    "030e110201020b",
+    "030e110202000c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+h, i",
+   "canonical": "shift+h, i",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f11020002",
+    "030f110201020b",
+    "030f110202000c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+h, i",
+   "canonical": "shift+h, i",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030121020002",
+    "0301210201020b",
+    "0301210202000c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+h, i",
+   "canonical": "shift+h, i",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030621020002",
+    "0306210201020b",
+    "0306210202000c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+h, i",
+   "canonical": "shift+h, i",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d21020002",
+    "030d210201020b",
+    "030d210202000c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+h, i",
+   "canonical": "shift+h, i",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e21020002",
+    "030e210201020b",
+    "030e210202000c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+h, i",
+   "canonical": "shift+h, i",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f21020002",
+    "030f210201020b",
+    "030f210202000c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+h, i",
+   "canonical": "shift+h, i",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030131020002",
+    "0301310201020b",
+    "0301310202000c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+h, i",
+   "canonical": "shift+h, i",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030631020002",
+    "0306310201020b",
+    "0306310202000c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+h, i",
+   "canonical": "shift+h, i",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d31020002",
+    "030d310201020b",
+    "030d310202000c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+h, i",
+   "canonical": "shift+h, i",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e31020002",
+    "030e310201020b",
+    "030e310202000c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+h, i",
+   "canonical": "shift+h, i",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f31020002",
+    "030f310201020b",
+    "030f310202000c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "volume-up",
+   "canonical": "volume-up",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030112e9",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "volume-up",
+   "canonical": "volume-up",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030612e9",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "volume-up",
+   "canonical": "volume-up",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d12e9",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "volume-up",
+   "canonical": "volume-up",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e12e9",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "volume-up",
+   "canonical": "volume-up",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f12e9",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "volume-up",
+   "canonical": "volume-up",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030122e9",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "volume-up",
+   "canonical": "volume-up",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030622e9",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "volume-up",
+   "canonical": "volume-up",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d22e9",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "volume-up",
+   "canonical": "volume-up",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e22e9",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "volume-up",
+   "canonical": "volume-up",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f22e9",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "volume-up",
+   "canonical": "volume-up",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030132e9",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "volume-up",
+   "canonical": "volume-up",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030632e9",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "volume-up",
+   "canonical": "volume-up",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d32e9",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "volume-up",
+   "canonical": "volume-up",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e32e9",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "volume-up",
+   "canonical": "volume-up",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f32e9",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "mute",
+   "canonical": "mute",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030112e2",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "mute",
+   "canonical": "mute",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030612e2",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "mute",
+   "canonical": "mute",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d12e2",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "mute",
+   "canonical": "mute",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e12e2",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "mute",
+   "canonical": "mute",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f12e2",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "mute",
+   "canonical": "mute",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030122e2",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "mute",
+   "canonical": "mute",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030622e2",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "mute",
+   "canonical": "mute",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d22e2",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "mute",
+   "canonical": "mute",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e22e2",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "mute",
+   "canonical": "mute",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f22e2",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "mute",
+   "canonical": "mute",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030132e2",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "mute",
+   "canonical": "mute",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030632e2",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "mute",
+   "canonical": "mute",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d32e2",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "mute",
+   "canonical": "mute",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e32e2",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "mute",
+   "canonical": "mute",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f32e2",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "play-pause",
+   "canonical": "play",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030112cd",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "play-pause",
+   "canonical": "play",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030612cd",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "play-pause",
+   "canonical": "play",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d12cd",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "play-pause",
+   "canonical": "play",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e12cd",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "play-pause",
+   "canonical": "play",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f12cd",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "play-pause",
+   "canonical": "play",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030122cd",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "play-pause",
+   "canonical": "play",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030622cd",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "play-pause",
+   "canonical": "play",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d22cd",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "play-pause",
+   "canonical": "play",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e22cd",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "play-pause",
+   "canonical": "play",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f22cd",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "play-pause",
+   "canonical": "play",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030132cd",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "play-pause",
+   "canonical": "play",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030632cd",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "play-pause",
+   "canonical": "play",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d32cd",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "play-pause",
+   "canonical": "play",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e32cd",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "play-pause",
+   "canonical": "play",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f32cd",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "brightness-down",
+   "canonical": "brightness-down",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03011270",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "brightness-down",
+   "canonical": "brightness-down",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03061270",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "brightness-down",
+   "canonical": "brightness-down",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d1270",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "brightness-down",
+   "canonical": "brightness-down",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e1270",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "brightness-down",
+   "canonical": "brightness-down",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f1270",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "brightness-down",
+   "canonical": "brightness-down",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03012270",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "brightness-down",
+   "canonical": "brightness-down",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03062270",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "brightness-down",
+   "canonical": "brightness-down",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d2270",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "brightness-down",
+   "canonical": "brightness-down",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e2270",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "brightness-down",
+   "canonical": "brightness-down",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f2270",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "brightness-down",
+   "canonical": "brightness-down",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03013270",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "brightness-down",
+   "canonical": "brightness-down",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03063270",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "brightness-down",
+   "canonical": "brightness-down",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d3270",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "brightness-down",
+   "canonical": "brightness-down",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e3270",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "brightness-down",
+   "canonical": "brightness-down",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f3270",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "click",
+   "canonical": "click",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03011301",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "click",
+   "canonical": "click",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03061301",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "click",
+   "canonical": "click",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d1301",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "click",
+   "canonical": "click",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e1301",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "click",
+   "canonical": "click",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f1301",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "click",
+   "canonical": "click",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03012301",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "click",
+   "canonical": "click",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03062301",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "click",
+   "canonical": "click",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d2301",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "click",
+   "canonical": "click",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e2301",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "click",
+   "canonical": "click",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f2301",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "click",
+   "canonical": "click",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03013301",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "click",
+   "canonical": "click",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03063301",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "click",
+   "canonical": "click",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d3301",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "click",
+   "canonical": "click",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e3301",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "click",
+   "canonical": "click",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f3301",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "right-click",
+   "canonical": "right-click",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03011302",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "right-click",
+   "canonical": "right-click",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03061302",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "right-click",
+   "canonical": "right-click",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d1302",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "right-click",
+   "canonical": "right-click",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e1302",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "right-click",
+   "canonical": "right-click",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f1302",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "right-click",
+   "canonical": "right-click",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03012302",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "right-click",
+   "canonical": "right-click",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03062302",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "right-click",
+   "canonical": "right-click",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d2302",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "right-click",
+   "canonical": "right-click",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e2302",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "right-click",
+   "canonical": "right-click",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f2302",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "right-click",
+   "canonical": "right-click",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03013302",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "right-click",
+   "canonical": "right-click",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03063302",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "right-click",
+   "canonical": "right-click",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d3302",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "right-click",
+   "canonical": "right-click",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e3302",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "right-click",
+   "canonical": "right-click",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f3302",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "middle-click",
+   "canonical": "middle-click",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03011304",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "middle-click",
+   "canonical": "middle-click",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03061304",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "middle-click",
+   "canonical": "middle-click",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d1304",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "middle-click",
+   "canonical": "middle-click",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e1304",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "middle-click",
+   "canonical": "middle-click",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f1304",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "middle-click",
+   "canonical": "middle-click",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03012304",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "middle-click",
+   "canonical": "middle-click",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03062304",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "middle-click",
+   "canonical": "middle-click",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d2304",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "middle-click",
+   "canonical": "middle-click",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e2304",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "middle-click",
+   "canonical": "middle-click",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f2304",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "middle-click",
+   "canonical": "middle-click",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03013304",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "middle-click",
+   "canonical": "middle-click",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03063304",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "middle-click",
+   "canonical": "middle-click",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d3304",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "middle-click",
+   "canonical": "middle-click",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e3304",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "middle-click",
+   "canonical": "middle-click",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f3304",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "scroll-up",
+   "canonical": "scroll-up",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03011300000001",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "scroll-up",
+   "canonical": "scroll-up",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03061300000001",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "scroll-up",
+   "canonical": "scroll-up",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d1300000001",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "scroll-up",
+   "canonical": "scroll-up",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e1300000001",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "scroll-up",
+   "canonical": "scroll-up",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f1300000001",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "scroll-up",
+   "canonical": "scroll-up",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03012300000001",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "scroll-up",
+   "canonical": "scroll-up",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03062300000001",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "scroll-up",
+   "canonical": "scroll-up",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d2300000001",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "scroll-up",
+   "canonical": "scroll-up",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e2300000001",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "scroll-up",
+   "canonical": "scroll-up",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f2300000001",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "scroll-up",
+   "canonical": "scroll-up",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03013300000001",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "scroll-up",
+   "canonical": "scroll-up",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03063300000001",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "scroll-up",
+   "canonical": "scroll-up",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d3300000001",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "scroll-up",
+   "canonical": "scroll-up",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e3300000001",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "scroll-up",
+   "canonical": "scroll-up",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f3300000001",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+scroll-down",
+   "canonical": "ctrl+scroll-down",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030113000000ff01",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+scroll-down",
+   "canonical": "ctrl+scroll-down",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030613000000ff01",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+scroll-down",
+   "canonical": "ctrl+scroll-down",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d13000000ff01",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+scroll-down",
+   "canonical": "ctrl+scroll-down",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e13000000ff01",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+scroll-down",
+   "canonical": "ctrl+scroll-down",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f13000000ff01",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+scroll-down",
+   "canonical": "ctrl+scroll-down",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030123000000ff01",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+scroll-down",
+   "canonical": "ctrl+scroll-down",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030623000000ff01",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+scroll-down",
+   "canonical": "ctrl+scroll-down",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d23000000ff01",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+scroll-down",
+   "canonical": "ctrl+scroll-down",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e23000000ff01",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+scroll-down",
+   "canonical": "ctrl+scroll-down",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f23000000ff01",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+scroll-down",
+   "canonical": "ctrl+scroll-down",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030133000000ff01",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+scroll-down",
+   "canonical": "ctrl+scroll-down",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030633000000ff01",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+scroll-down",
+   "canonical": "ctrl+scroll-down",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d33000000ff01",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+scroll-down",
+   "canonical": "ctrl+scroll-down",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e33000000ff01",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+scroll-down",
+   "canonical": "ctrl+scroll-down",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f33000000ff01",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "rcmd+ropt+x",
+   "canonical": "ropt+rcmd+x",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "0301110100c0",
+    "0301110101c01b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "rcmd+ropt+x",
+   "canonical": "ropt+rcmd+x",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "0306110100c0",
+    "0306110101c01b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "rcmd+ropt+x",
+   "canonical": "ropt+rcmd+x",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d110100c0",
+    "030d110101c01b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "rcmd+ropt+x",
+   "canonical": "ropt+rcmd+x",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e110100c0",
+    "030e110101c01b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "rcmd+ropt+x",
+   "canonical": "ropt+rcmd+x",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f110100c0",
+    "030f110101c01b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "rcmd+ropt+x",
+   "canonical": "ropt+rcmd+x",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "0301210100c0",
+    "0301210101c01b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "rcmd+ropt+x",
+   "canonical": "ropt+rcmd+x",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "0306210100c0",
+    "0306210101c01b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "rcmd+ropt+x",
+   "canonical": "ropt+rcmd+x",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d210100c0",
+    "030d210101c01b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "rcmd+ropt+x",
+   "canonical": "ropt+rcmd+x",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e210100c0",
+    "030e210101c01b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "rcmd+ropt+x",
+   "canonical": "ropt+rcmd+x",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f210100c0",
+    "030f210101c01b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "rcmd+ropt+x",
+   "canonical": "ropt+rcmd+x",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "0301310100c0",
+    "0301310101c01b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "rcmd+ropt+x",
+   "canonical": "ropt+rcmd+x",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "0306310100c0",
+    "0306310101c01b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "rcmd+ropt+x",
+   "canonical": "ropt+rcmd+x",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d310100c0",
+    "030d310101c01b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "rcmd+ropt+x",
+   "canonical": "ropt+rcmd+x",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e310100c0",
+    "030e310101c01b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "rcmd+ropt+x",
+   "canonical": "ropt+rcmd+x",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f310100c0",
+    "030f310101c01b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "esc",
+   "canonical": "esc",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03011101",
+    "03011101010029",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "esc",
+   "canonical": "esc",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03061101",
+    "03061101010029",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "esc",
+   "canonical": "esc",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d1101",
+    "030d1101010029",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "esc",
+   "canonical": "esc",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e1101",
+    "030e1101010029",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "esc",
+   "canonical": "esc",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f1101",
+    "030f1101010029",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "esc",
+   "canonical": "esc",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03012101",
+    "03012101010029",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "esc",
+   "canonical": "esc",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03062101",
+    "03062101010029",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "esc",
+   "canonical": "esc",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d2101",
+    "030d2101010029",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "esc",
+   "canonical": "esc",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e2101",
+    "030e2101010029",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "esc",
+   "canonical": "esc",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f2101",
+    "030f2101010029",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "esc",
+   "canonical": "esc",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03013101",
+    "03013101010029",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "esc",
+   "canonical": "esc",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03063101",
+    "03063101010029",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "esc",
+   "canonical": "esc",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d3101",
+    "030d3101010029",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "esc",
+   "canonical": "esc",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e3101",
+    "030e3101010029",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "esc",
+   "canonical": "esc",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f3101",
+    "030f3101010029",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "pageup",
+   "canonical": "pageup",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03011101",
+    "0301110101004b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "pageup",
+   "canonical": "pageup",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03061101",
+    "0306110101004b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "pageup",
+   "canonical": "pageup",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d1101",
+    "030d110101004b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "pageup",
+   "canonical": "pageup",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e1101",
+    "030e110101004b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "pageup",
+   "canonical": "pageup",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f1101",
+    "030f110101004b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "pageup",
+   "canonical": "pageup",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03012101",
+    "0301210101004b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "pageup",
+   "canonical": "pageup",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03062101",
+    "0306210101004b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "pageup",
+   "canonical": "pageup",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d2101",
+    "030d210101004b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "pageup",
+   "canonical": "pageup",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e2101",
+    "030e210101004b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "pageup",
+   "canonical": "pageup",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f2101",
+    "030f210101004b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "pageup",
+   "canonical": "pageup",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03013101",
+    "0301310101004b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "pageup",
+   "canonical": "pageup",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03063101",
+    "0306310101004b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "pageup",
+   "canonical": "pageup",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d3101",
+    "030d310101004b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "pageup",
+   "canonical": "pageup",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e3101",
+    "030e310101004b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "pageup",
+   "canonical": "pageup",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f3101",
+    "030f310101004b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "opt+p, left",
+   "canonical": "opt+p, left",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030111020004",
+    "03011102010413",
+    "03011102020050",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "opt+p, left",
+   "canonical": "opt+p, left",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030611020004",
+    "03061102010413",
+    "03061102020050",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "opt+p, left",
+   "canonical": "opt+p, left",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d11020004",
+    "030d1102010413",
+    "030d1102020050",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "opt+p, left",
+   "canonical": "opt+p, left",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e11020004",
+    "030e1102010413",
+    "030e1102020050",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "opt+p, left",
+   "canonical": "opt+p, left",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f11020004",
+    "030f1102010413",
+    "030f1102020050",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "opt+p, left",
+   "canonical": "opt+p, left",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030121020004",
+    "03012102010413",
+    "03012102020050",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "opt+p, left",
+   "canonical": "opt+p, left",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030621020004",
+    "03062102010413",
+    "03062102020050",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "opt+p, left",
+   "canonical": "opt+p, left",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d21020004",
+    "030d2102010413",
+    "030d2102020050",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "opt+p, left",
+   "canonical": "opt+p, left",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e21020004",
+    "030e2102010413",
+    "030e2102020050",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "opt+p, left",
+   "canonical": "opt+p, left",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f21020004",
+    "030f2102010413",
+    "030f2102020050",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "opt+p, left",
+   "canonical": "opt+p, left",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030131020004",
+    "03013102010413",
+    "03013102020050",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "opt+p, left",
+   "canonical": "opt+p, left",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030631020004",
+    "03063102010413",
+    "03063102020050",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "opt+p, left",
+   "canonical": "opt+p, left",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d31020004",
+    "030d3102010413",
+    "030d3102020050",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "opt+p, left",
+   "canonical": "opt+p, left",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e31020004",
+    "030e3102010413",
+    "030e3102020050",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "opt+p, left",
+   "canonical": "opt+p, left",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f31020004",
+    "030f3102010413",
+    "030f3102020050",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "Control+Option+backspace",
+   "canonical": "ctrl+opt+backspace",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030111010005",
+    "0301110101052a",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "Control+Option+backspace",
+   "canonical": "ctrl+opt+backspace",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030611010005",
+    "0306110101052a",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "Control+Option+backspace",
+   "canonical": "ctrl+opt+backspace",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d11010005",
+    "030d110101052a",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "Control+Option+backspace",
+   "canonical": "ctrl+opt+backspace",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e11010005",
+    "030e110101052a",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "Control+Option+backspace",
+   "canonical": "ctrl+opt+backspace",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f11010005",
+    "030f110101052a",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "Control+Option+backspace",
+   "canonical": "ctrl+opt+backspace",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030121010005",
+    "0301210101052a",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "Control+Option+backspace",
+   "canonical": "ctrl+opt+backspace",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030621010005",
+    "0306210101052a",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "Control+Option+backspace",
+   "canonical": "ctrl+opt+backspace",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d21010005",
+    "030d210101052a",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "Control+Option+backspace",
+   "canonical": "ctrl+opt+backspace",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e21010005",
+    "030e210101052a",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "Control+Option+backspace",
+   "canonical": "ctrl+opt+backspace",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f21010005",
+    "030f210101052a",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "Control+Option+backspace",
+   "canonical": "ctrl+opt+backspace",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030131010005",
+    "0301310101052a",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "Control+Option+backspace",
+   "canonical": "ctrl+opt+backspace",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030631010005",
+    "0306310101052a",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "Control+Option+backspace",
+   "canonical": "ctrl+opt+backspace",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d31010005",
+    "030d310101052a",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "Control+Option+backspace",
+   "canonical": "ctrl+opt+backspace",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e31010005",
+    "030e310101052a",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "Control+Option+backspace",
+   "canonical": "ctrl+opt+backspace",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f31010005",
+    "030f310101052a",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f13",
+   "canonical": "f13",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03011101",
+    "03011101010068",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f13",
+   "canonical": "f13",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03061101",
+    "03061101010068",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f13",
+   "canonical": "f13",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d1101",
+    "030d1101010068",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f13",
+   "canonical": "f13",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e1101",
+    "030e1101010068",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f13",
+   "canonical": "f13",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f1101",
+    "030f1101010068",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f13",
+   "canonical": "f13",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03012101",
+    "03012101010068",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f13",
+   "canonical": "f13",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03062101",
+    "03062101010068",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f13",
+   "canonical": "f13",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d2101",
+    "030d2101010068",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f13",
+   "canonical": "f13",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e2101",
+    "030e2101010068",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f13",
+   "canonical": "f13",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f2101",
+    "030f2101010068",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f13",
+   "canonical": "f13",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03013101",
+    "03013101010068",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f13",
+   "canonical": "f13",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03063101",
+    "03063101010068",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f13",
+   "canonical": "f13",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d3101",
+    "030d3101010068",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f13",
+   "canonical": "f13",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e3101",
+    "030e3101010068",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f13",
+   "canonical": "f13",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f3101",
+    "030f3101010068",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-enter",
+   "canonical": "kp-enter",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03011101",
+    "03011101010058",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-enter",
+   "canonical": "kp-enter",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03061101",
+    "03061101010058",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-enter",
+   "canonical": "kp-enter",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d1101",
+    "030d1101010058",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-enter",
+   "canonical": "kp-enter",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e1101",
+    "030e1101010058",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-enter",
+   "canonical": "kp-enter",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f1101",
+    "030f1101010058",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-enter",
+   "canonical": "kp-enter",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03012101",
+    "03012101010058",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-enter",
+   "canonical": "kp-enter",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03062101",
+    "03062101010058",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-enter",
+   "canonical": "kp-enter",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d2101",
+    "030d2101010058",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-enter",
+   "canonical": "kp-enter",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e2101",
+    "030e2101010058",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-enter",
+   "canonical": "kp-enter",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f2101",
+    "030f2101010058",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-enter",
+   "canonical": "kp-enter",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03013101",
+    "03013101010058",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-enter",
+   "canonical": "kp-enter",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03063101",
+    "03063101010058",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-enter",
+   "canonical": "kp-enter",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d3101",
+    "030d3101010058",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-enter",
+   "canonical": "kp-enter",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e3101",
+    "030e3101010058",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-enter",
+   "canonical": "kp-enter",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f3101",
+    "030f3101010058",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+`",
+   "canonical": "cmd+grave",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030111010008",
+    "03011101010835",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+`",
+   "canonical": "cmd+grave",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030611010008",
+    "03061101010835",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+`",
+   "canonical": "cmd+grave",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d11010008",
+    "030d1101010835",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+`",
+   "canonical": "cmd+grave",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e11010008",
+    "030e1101010835",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+`",
+   "canonical": "cmd+grave",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f11010008",
+    "030f1101010835",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+`",
+   "canonical": "cmd+grave",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030121010008",
+    "03012101010835",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+`",
+   "canonical": "cmd+grave",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030621010008",
+    "03062101010835",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+`",
+   "canonical": "cmd+grave",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d21010008",
+    "030d2101010835",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+`",
+   "canonical": "cmd+grave",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e21010008",
+    "030e2101010835",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+`",
+   "canonical": "cmd+grave",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f21010008",
+    "030f2101010835",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+`",
+   "canonical": "cmd+grave",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030131010008",
+    "03013101010835",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+`",
+   "canonical": "cmd+grave",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030631010008",
+    "03063101010835",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+`",
+   "canonical": "cmd+grave",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d31010008",
+    "030d3101010835",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+`",
+   "canonical": "cmd+grave",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e31010008",
+    "030e3101010835",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "cmd+`",
+   "canonical": "cmd+grave",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f31010008",
+    "030f3101010835",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+=",
+   "canonical": "ctrl+equal",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030111010001",
+    "0301110101012e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+=",
+   "canonical": "ctrl+equal",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030611010001",
+    "0306110101012e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+=",
+   "canonical": "ctrl+equal",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d11010001",
+    "030d110101012e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+=",
+   "canonical": "ctrl+equal",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e11010001",
+    "030e110101012e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+=",
+   "canonical": "ctrl+equal",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f11010001",
+    "030f110101012e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+=",
+   "canonical": "ctrl+equal",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030121010001",
+    "0301210101012e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+=",
+   "canonical": "ctrl+equal",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030621010001",
+    "0306210101012e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+=",
+   "canonical": "ctrl+equal",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d21010001",
+    "030d210101012e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+=",
+   "canonical": "ctrl+equal",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e21010001",
+    "030e210101012e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+=",
+   "canonical": "ctrl+equal",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f21010001",
+    "030f210101012e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+=",
+   "canonical": "ctrl+equal",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030131010001",
+    "0301310101012e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+=",
+   "canonical": "ctrl+equal",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030631010001",
+    "0306310101012e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+=",
+   "canonical": "ctrl+equal",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d31010001",
+    "030d310101012e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+=",
+   "canonical": "ctrl+equal",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e31010001",
+    "030e310101012e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+=",
+   "canonical": "ctrl+equal",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f31010001",
+    "030f310101012e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+equal",
+   "canonical": "shift+equal",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030111010002",
+    "0301110101022e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+equal",
+   "canonical": "shift+equal",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030611010002",
+    "0306110101022e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+equal",
+   "canonical": "shift+equal",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d11010002",
+    "030d110101022e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+equal",
+   "canonical": "shift+equal",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e11010002",
+    "030e110101022e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+equal",
+   "canonical": "shift+equal",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f11010002",
+    "030f110101022e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+equal",
+   "canonical": "shift+equal",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030121010002",
+    "0301210101022e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+equal",
+   "canonical": "shift+equal",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030621010002",
+    "0306210101022e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+equal",
+   "canonical": "shift+equal",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d21010002",
+    "030d210101022e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+equal",
+   "canonical": "shift+equal",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e21010002",
+    "030e210101022e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+equal",
+   "canonical": "shift+equal",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f21010002",
+    "030f210101022e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+equal",
+   "canonical": "shift+equal",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030131010002",
+    "0301310101022e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+equal",
+   "canonical": "shift+equal",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030631010002",
+    "0306310101022e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+equal",
+   "canonical": "shift+equal",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d31010002",
+    "030d310101022e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+equal",
+   "canonical": "shift+equal",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e31010002",
+    "030e310101022e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "shift+equal",
+   "canonical": "shift+equal",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f31010002",
+    "030f310101022e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "alt+tab",
+   "canonical": "opt+tab",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030111010004",
+    "0301110101042b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "alt+tab",
+   "canonical": "opt+tab",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030611010004",
+    "0306110101042b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "alt+tab",
+   "canonical": "opt+tab",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d11010004",
+    "030d110101042b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "alt+tab",
+   "canonical": "opt+tab",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e11010004",
+    "030e110101042b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "alt+tab",
+   "canonical": "opt+tab",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f11010004",
+    "030f110101042b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "alt+tab",
+   "canonical": "opt+tab",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030121010004",
+    "0301210101042b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "alt+tab",
+   "canonical": "opt+tab",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030621010004",
+    "0306210101042b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "alt+tab",
+   "canonical": "opt+tab",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d21010004",
+    "030d210101042b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "alt+tab",
+   "canonical": "opt+tab",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e21010004",
+    "030e210101042b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "alt+tab",
+   "canonical": "opt+tab",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f21010004",
+    "030f210101042b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "alt+tab",
+   "canonical": "opt+tab",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030131010004",
+    "0301310101042b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "alt+tab",
+   "canonical": "opt+tab",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030631010004",
+    "0306310101042b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "alt+tab",
+   "canonical": "opt+tab",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d31010004",
+    "030d310101042b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "alt+tab",
+   "canonical": "opt+tab",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e31010004",
+    "030e310101042b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "alt+tab",
+   "canonical": "opt+tab",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f31010004",
+    "030f310101042b",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "win+space",
+   "canonical": "cmd+space",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030111010008",
+    "0301110101082c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "win+space",
+   "canonical": "cmd+space",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030611010008",
+    "0306110101082c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "win+space",
+   "canonical": "cmd+space",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d11010008",
+    "030d110101082c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "win+space",
+   "canonical": "cmd+space",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e11010008",
+    "030e110101082c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "win+space",
+   "canonical": "cmd+space",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f11010008",
+    "030f110101082c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "win+space",
+   "canonical": "cmd+space",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030121010008",
+    "0301210101082c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "win+space",
+   "canonical": "cmd+space",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030621010008",
+    "0306210101082c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "win+space",
+   "canonical": "cmd+space",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d21010008",
+    "030d210101082c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "win+space",
+   "canonical": "cmd+space",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e21010008",
+    "030e210101082c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "win+space",
+   "canonical": "cmd+space",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f21010008",
+    "030f210101082c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "win+space",
+   "canonical": "cmd+space",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030131010008",
+    "0301310101082c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "win+space",
+   "canonical": "cmd+space",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030631010008",
+    "0306310101082c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "win+space",
+   "canonical": "cmd+space",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d31010008",
+    "030d310101082c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "win+space",
+   "canonical": "cmd+space",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e31010008",
+    "030e310101082c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "win+space",
+   "canonical": "cmd+space",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f31010008",
+    "030f310101082c",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "comma",
+   "canonical": "comma",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03011101",
+    "03011101010036",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "comma",
+   "canonical": "comma",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03061101",
+    "03061101010036",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "comma",
+   "canonical": "comma",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d1101",
+    "030d1101010036",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "comma",
+   "canonical": "comma",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e1101",
+    "030e1101010036",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "comma",
+   "canonical": "comma",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f1101",
+    "030f1101010036",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "comma",
+   "canonical": "comma",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03012101",
+    "03012101010036",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "comma",
+   "canonical": "comma",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03062101",
+    "03062101010036",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "comma",
+   "canonical": "comma",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d2101",
+    "030d2101010036",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "comma",
+   "canonical": "comma",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e2101",
+    "030e2101010036",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "comma",
+   "canonical": "comma",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f2101",
+    "030f2101010036",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "comma",
+   "canonical": "comma",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03013101",
+    "03013101010036",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "comma",
+   "canonical": "comma",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03063101",
+    "03063101010036",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "comma",
+   "canonical": "comma",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d3101",
+    "030d3101010036",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "comma",
+   "canonical": "comma",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e3101",
+    "030e3101010036",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "comma",
+   "canonical": "comma",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f3101",
+    "030f3101010036",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+shift",
+   "canonical": "ctrl+shift",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030111010003",
+    "030111010103",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+shift",
+   "canonical": "ctrl+shift",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030611010003",
+    "030611010103",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+shift",
+   "canonical": "ctrl+shift",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d11010003",
+    "030d11010103",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+shift",
+   "canonical": "ctrl+shift",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e11010003",
+    "030e11010103",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+shift",
+   "canonical": "ctrl+shift",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f11010003",
+    "030f11010103",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+shift",
+   "canonical": "ctrl+shift",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030121010003",
+    "030121010103",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+shift",
+   "canonical": "ctrl+shift",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030621010003",
+    "030621010103",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+shift",
+   "canonical": "ctrl+shift",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d21010003",
+    "030d21010103",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+shift",
+   "canonical": "ctrl+shift",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e21010003",
+    "030e21010103",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+shift",
+   "canonical": "ctrl+shift",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f21010003",
+    "030f21010103",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+shift",
+   "canonical": "ctrl+shift",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030131010003",
+    "030131010103",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+shift",
+   "canonical": "ctrl+shift",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030631010003",
+    "030631010103",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+shift",
+   "canonical": "ctrl+shift",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d31010003",
+    "030d31010103",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+shift",
+   "canonical": "ctrl+shift",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e31010003",
+    "030e31010103",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "ctrl+shift",
+   "canonical": "ctrl+shift",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f31010003",
+    "030f31010103",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "CMD + K",
+   "canonical": "cmd+k",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030111010008",
+    "0301110101080e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "CMD + K",
+   "canonical": "cmd+k",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030611010008",
+    "0306110101080e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "CMD + K",
+   "canonical": "cmd+k",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d11010008",
+    "030d110101080e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "CMD + K",
+   "canonical": "cmd+k",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e11010008",
+    "030e110101080e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "CMD + K",
+   "canonical": "cmd+k",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f11010008",
+    "030f110101080e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "CMD + K",
+   "canonical": "cmd+k",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030121010008",
+    "0301210101080e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "CMD + K",
+   "canonical": "cmd+k",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030621010008",
+    "0306210101080e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "CMD + K",
+   "canonical": "cmd+k",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d21010008",
+    "030d210101080e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "CMD + K",
+   "canonical": "cmd+k",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e21010008",
+    "030e210101080e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "CMD + K",
+   "canonical": "cmd+k",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f21010008",
+    "030f210101080e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "CMD + K",
+   "canonical": "cmd+k",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030131010008",
+    "0301310101080e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "CMD + K",
+   "canonical": "cmd+k",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030631010008",
+    "0306310101080e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "CMD + K",
+   "canonical": "cmd+k",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d31010008",
+    "030d310101080e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "CMD + K",
+   "canonical": "cmd+k",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e31010008",
+    "030e310101080e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "CMD + K",
+   "canonical": "cmd+k",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f31010008",
+    "030f310101080e",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f12",
+   "canonical": "f12",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03011101",
+    "03011101010045",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f12",
+   "canonical": "f12",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03061101",
+    "03061101010045",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f12",
+   "canonical": "f12",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d1101",
+    "030d1101010045",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f12",
+   "canonical": "f12",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e1101",
+    "030e1101010045",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f12",
+   "canonical": "f12",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f1101",
+    "030f1101010045",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f12",
+   "canonical": "f12",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03012101",
+    "03012101010045",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f12",
+   "canonical": "f12",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03062101",
+    "03062101010045",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f12",
+   "canonical": "f12",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d2101",
+    "030d2101010045",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f12",
+   "canonical": "f12",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e2101",
+    "030e2101010045",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f12",
+   "canonical": "f12",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f2101",
+    "030f2101010045",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f12",
+   "canonical": "f12",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03013101",
+    "03013101010045",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f12",
+   "canonical": "f12",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03063101",
+    "03063101010045",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f12",
+   "canonical": "f12",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d3101",
+    "030d3101010045",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f12",
+   "canonical": "f12",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e3101",
+    "030e3101010045",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "f12",
+   "canonical": "f12",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f3101",
+    "030f3101010045",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-0",
+   "canonical": "kp-0",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03011101",
+    "03011101010062",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-0",
+   "canonical": "kp-0",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03061101",
+    "03061101010062",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-0",
+   "canonical": "kp-0",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d1101",
+    "030d1101010062",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-0",
+   "canonical": "kp-0",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e1101",
+    "030e1101010062",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-0",
+   "canonical": "kp-0",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f1101",
+    "030f1101010062",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-0",
+   "canonical": "kp-0",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03012101",
+    "03012101010062",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-0",
+   "canonical": "kp-0",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03062101",
+    "03062101010062",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-0",
+   "canonical": "kp-0",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d2101",
+    "030d2101010062",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-0",
+   "canonical": "kp-0",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e2101",
+    "030e2101010062",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-0",
+   "canonical": "kp-0",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f2101",
+    "030f2101010062",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-0",
+   "canonical": "kp-0",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03013101",
+    "03013101010062",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-0",
+   "canonical": "kp-0",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03063101",
+    "03063101010062",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-0",
+   "canonical": "kp-0",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d3101",
+    "030d3101010062",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-0",
+   "canonical": "kp-0",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e3101",
+    "030e3101010062",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "kp-0",
+   "canonical": "kp-0",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f3101",
+    "030f3101010062",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "menu",
+   "canonical": "menu",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03011101",
+    "03011101010065",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "menu",
+   "canonical": "menu",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03061101",
+    "03061101010065",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "menu",
+   "canonical": "menu",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d1101",
+    "030d1101010065",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "menu",
+   "canonical": "menu",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e1101",
+    "030e1101010065",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "menu",
+   "canonical": "menu",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f1101",
+    "030f1101010065",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "menu",
+   "canonical": "menu",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03012101",
+    "03012101010065",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "menu",
+   "canonical": "menu",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03062101",
+    "03062101010065",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "menu",
+   "canonical": "menu",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d2101",
+    "030d2101010065",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "menu",
+   "canonical": "menu",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e2101",
+    "030e2101010065",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "menu",
+   "canonical": "menu",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f2101",
+    "030f2101010065",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "menu",
+   "canonical": "menu",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03013101",
+    "03013101010065",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "menu",
+   "canonical": "menu",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03063101",
+    "03063101010065",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "menu",
+   "canonical": "menu",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d3101",
+    "030d3101010065",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "menu",
+   "canonical": "menu",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e3101",
+    "030e3101010065",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "menu",
+   "canonical": "menu",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f3101",
+    "030f3101010065",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "return",
+   "canonical": "enter",
+   "slot": "key1",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03011101",
+    "03011101010028",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "return",
+   "canonical": "enter",
+   "slot": "key6",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03061101",
+    "03061101010028",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "return",
+   "canonical": "enter",
+   "slot": "knob-left",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030d1101",
+    "030d1101010028",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "return",
+   "canonical": "enter",
+   "slot": "knob-press",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030e1101",
+    "030e1101010028",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "return",
+   "canonical": "enter",
+   "slot": "knob-right",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "030f1101",
+    "030f1101010028",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "return",
+   "canonical": "enter",
+   "slot": "key1",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03012101",
+    "03012101010028",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "return",
+   "canonical": "enter",
+   "slot": "key6",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "03062101",
+    "03062101010028",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "return",
+   "canonical": "enter",
+   "slot": "knob-left",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030d2101",
+    "030d2101010028",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "return",
+   "canonical": "enter",
+   "slot": "knob-press",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030e2101",
+    "030e2101010028",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "return",
+   "canonical": "enter",
+   "slot": "knob-right",
+   "layer": 2,
+   "packets": [
+    "03a102",
+    "030f2101",
+    "030f2101010028",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "return",
+   "canonical": "enter",
+   "slot": "key1",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03013101",
+    "03013101010028",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "return",
+   "canonical": "enter",
+   "slot": "key6",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03063101",
+    "03063101010028",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "return",
+   "canonical": "enter",
+   "slot": "knob-left",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030d3101",
+    "030d3101010028",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "return",
+   "canonical": "enter",
+   "slot": "knob-press",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030e3101",
+    "030e3101010028",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": "return",
+   "canonical": "enter",
+   "slot": "knob-right",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "030f3101",
+    "030f3101010028",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": null,
+   "canonical": null,
+   "slot": "key2",
+   "layer": 1,
+   "packets": [
+    "03a101",
+    "03021101",
+    "0302110101",
+    "03aaaa"
+   ]
+  },
+  {
+   "action": null,
+   "canonical": null,
+   "slot": "key2",
+   "layer": 3,
+   "packets": [
+    "03a103",
+    "03023101",
+    "0302310101",
+    "03aaaa"
+   ]
+  }
+ ],
+ "invalid": [
+  "",
+  "cmd+c,,cmd+v",
+  "a, b, c, d, e, f",
+  "cmd+delete",
+  "cmd+a+b",
+  "volume-up, a",
+  "shift+mute",
+  "click, a",
+  "foo",
+  "cmd+"
+ ],
+ "led": {
+  "0": [
+   "03a101",
+   "03b018",
+   "03aaa1"
+  ],
+  "1": [
+   "03a101",
+   "03b01801",
+   "03aaa1"
+  ],
+  "2": [
+   "03a101",
+   "03b01802",
+   "03aaa1"
+  ]
+ },
+ "apply": {}
+}

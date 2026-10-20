@@ -1,0 +1,44 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  macos:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Swift version
+        run: swift --version
+
+      - name: Test (protocol checked against the Python CLI's packets)
+        run: swift test
+
+      - name: Build Macropad.app (universal)
+        run: UNIVERSAL=1 ./scripts/build-app.sh
+
+      - name: Zip
+        run: |
+          cd build
+          ditto -c -k --keepParent Macropad.app Macropad.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Macropad
+          path: build/Macropad.zip
+
+      - name: Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create "$GITHUB_REF_NAME" build/Macropad.zip --title "$GITHUB_REF_NAME" --generate-notes
