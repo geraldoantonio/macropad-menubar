@@ -86,7 +86,6 @@ struct SlotEditor: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text(slot.title).font(.subheadline.weight(.semibold))
-                Text("· camada \(layer)").font(.caption).foregroundStyle(.secondary)
                 Spacer()
             }
             Picker("Tipo", selection: $kind) {

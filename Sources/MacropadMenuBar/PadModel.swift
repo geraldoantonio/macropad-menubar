@@ -18,7 +18,9 @@ final class PadModel: ObservableObject {
     @Published private(set) var userPresets: [Preset] = []
     /// The layout from before the last preset was applied, for "Desfazer".
     @Published private(set) var undoLayout: Layout?
-    @Published var layer = 1
+    /// This pad has a single layer: the firmware ignores the layer byte and the last write to a
+    /// slot wins (docs/protocol.md in vibe-coder-keyboard). The app always uses layer 1.
+    let layer = 1
     @Published var selectedSlot: Slot? = .key1
     @Published var message: Message?
     @Published var launchAtLogin = SMAppService.mainApp.status == .enabled
@@ -102,6 +104,8 @@ final class PadModel: ObservableObject {
 
     /// Writes a whole layout; slots it doesn't map are cleared.
     func apply(_ newLayout: Layout, name: String, after: (() -> Void)? = nil) {
+        // Layers 2–3 (e.g. from a CLI or imported file) can't exist on this pad; keep layer 1.
+        let newLayout = Layout(led: newLayout.led, layers: newLayout.layers[1].map { [1: $0] } ?? [:])
         let packets: [[UInt8]]
         do { packets = try PadProtocol.applyPackets(newLayout) } catch {
             show(error.localizedDescription, error: true)

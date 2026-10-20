@@ -74,19 +74,18 @@ O pad só sabe mandar teclas, mídia e mouse. Para abrir programas, a tecla envi
 
 O app precisa estar aberto para essas teclas funcionarem.
 
-### Preset por app (as "camadas" de verdade)
+### Preset por app
 
 Em **Preset por app**, ligue **Automático** e escolha um preset para cada app: o pad é regravado
 sozinho quando você troca de app (em menos de um segundo). Ex.: Terminal → *Vibe Coder*,
 Spotify → *Mídia*, e um preset padrão para os outros apps.
 
-<p align="center">
-  <img src="docs/images/camadas.png" width="380" alt="Aviso no painel: neste pad a camada costuma ser ignorada">
-</p>
+### E as camadas?
 
-**Por que não usar as camadas 1–3?** O protocolo tem três camadas, mas neste modelo o firmware
-ignora a camada: a última gravação numa tecla vale para todas. Por isso o painel avisa ao
-selecionar a camada 2 ou 3, e o *Preset por app* é o jeito de ter conjuntos diferentes de teclas.
+O protocolo do fabricante tem três camadas (o mesmo programa serve modelos maiores), mas este
+modelo tem **uma só**: o firmware ignora a camada e a última gravação numa tecla vale para todas.
+Não há botão nem combinação que troque de camada, por isso o app não mostra camadas — use
+*Preset por app* para ter conjuntos diferentes de teclas.
 
 ## Arquivos
 

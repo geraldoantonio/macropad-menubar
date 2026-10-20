@@ -8,7 +8,6 @@ struct ContentView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HeaderView()
-            LayerPicker()
             PadView()
             if let slot = model.selectedSlot {
                 SlotEditor(slot: slot, layer: model.layer,
@@ -61,29 +60,6 @@ private struct HeaderView: View {
             }
             .padding(.horizontal, 8).padding(.vertical, 4)
             .background(.quaternary.opacity(0.6), in: Capsule())
-        }
-    }
-}
-
-// MARK: - Layer
-
-private struct LayerPicker: View {
-    @EnvironmentObject private var model: PadModel
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Picker("Camada", selection: $model.layer) {
-                ForEach(Array(PadProtocol.layers), id: \.self) { Text("Camada \($0)").tag($0) }
-            }
-            .pickerStyle(.segmented)
-            .labelsHidden()
-            if model.layer != 1 {
-                Label("Neste pad a camada costuma ser ignorada: gravar na camada \(model.layer) sobrescreve a mesma tecla da camada 1.",
-                      systemImage: "exclamationmark.triangle")
-                    .font(.caption)
-                    .foregroundStyle(.orange)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
         }
     }
 }
