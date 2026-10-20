@@ -51,9 +51,12 @@ struct AutomationView: View {
                             set: { model.setDefaultPreset($0) }), allowNone: true)
                     }
                     HStack {
-                        Button {
-                            model.addRuleFromPanel()
-                        } label: { Label("Adicionar app…", systemImage: "plus") }
+                        AppPickerMenu(onPick: { app in
+                            guard let bundleID = app.bundleID else { return }
+                            model.setRule(bundleID: bundleID, appName: app.name,
+                                          presetID: model.activePresetID ?? Preset.vibeCoder.id)
+                        }) { Label("Adicionar app", systemImage: "plus") }
+                            .fixedSize()
                         Spacer()
                         if let front = model.frontAppName {
                             Text("Em uso: \(front)").font(.caption).foregroundStyle(.secondary)

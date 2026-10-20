@@ -204,6 +204,7 @@ final class PadModel: ObservableObject {
         let panel = NSOpenPanel()
         panel.allowedContentTypes = [UTType(filenameExtension: "yaml"), UTType(filenameExtension: "yml")].compactMap { $0 }
         panel.message = "Escolha um layout YAML (formato do macropad CLI)"
+        panel.level = NSWindow.Level(rawValue: NSWindow.Level.popUpMenu.rawValue + 1)
         guard panel.runModal() == .OK, let url = panel.url else { return }
         do {
             let imported = try Layout.load(from: url)
@@ -219,6 +220,7 @@ final class PadModel: ObservableObject {
         NSApp.activate(ignoringOtherApps: true)
         let panel = NSSavePanel()
         panel.nameFieldStringValue = "macropad-layout.yaml"
+        panel.level = NSWindow.Level(rawValue: NSWindow.Level.popUpMenu.rawValue + 1)
         guard panel.runModal() == .OK, let url = panel.url else { return }
         do { try layout.save(to: url) } catch { show(error.localizedDescription, error: true) }
     }
@@ -309,19 +311,6 @@ final class PadModel: ObservableObject {
     func setDefaultPreset(_ presetID: String?) {
         config.defaultPreset = presetID
         saveConfig()
-    }
-
-    /// Adds a rule for an app picked in an open panel (or the app in front before the popover).
-    func addRuleFromPanel() {
-        NSApp.activate(ignoringOtherApps: true)
-        let panel = NSOpenPanel()
-        panel.directoryURL = URL(fileURLWithPath: "/Applications")
-        panel.allowedContentTypes = [.application]
-        panel.message = "Escolha o app que deve trocar o preset do pad"
-        guard panel.runModal() == .OK, let url = panel.url, let bundle = Bundle(url: url),
-              let bundleID = bundle.bundleIdentifier else { return }
-        let name = FileManager.default.displayName(atPath: url.path).replacingOccurrences(of: ".app", with: "")
-        setRule(bundleID: bundleID, appName: name, presetID: activePresetID ?? Preset.vibeCoder.id)
     }
 
     private var ownBundleID: String { Bundle.main.bundleIdentifier ?? "com.geraldoantonio.macropad-menubar" }

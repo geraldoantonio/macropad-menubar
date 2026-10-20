@@ -241,7 +241,8 @@ struct SlotEditor: View {
                         Text(Command(kind: .openApp, value: commandValue).label).lineLimit(1)
                     }
                     Spacer()
-                    Button("Escolher…", action: chooseApp)
+                    AppPickerMenu(onPick: { commandValue = $0.path }) { Text("Escolher…") }
+                        .fixedSize()
                 }
             case .openURL:
                 TextField("https://… , obsidian://… ou file:///…", text: $commandValue)
@@ -263,15 +264,6 @@ struct SlotEditor: View {
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
         }
-    }
-
-    private func chooseApp() {
-        NSApp.activate(ignoringOtherApps: true)
-        let panel = NSOpenPanel()
-        panel.directoryURL = URL(fileURLWithPath: "/Applications")
-        panel.allowedContentTypes = [.application]
-        panel.message = "Escolha o app que a tecla deve abrir"
-        if panel.runModal() == .OK, let url = panel.url { commandValue = url.path }
     }
 
     private func startRecording() {
