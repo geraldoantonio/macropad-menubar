@@ -6,7 +6,7 @@ e é a versão gráfica do CLI [`macropad`](https://github.com/nacif-software/vi
 com o mesmo protocolo, a mesma sintaxe de ações e o mesmo arquivo de layout.
 
 <p align="center">
-  <img src="docs/images/painel.png" width="380" alt="Painel do Macropad na barra de menus: desenho do pad com as teclas configuradas, editor da tecla selecionada, LED e presets">
+  <img src="docs/images/painel.png" width="400" alt="Painel do Macropad na barra de menus: desenho do pad com as teclas configuradas, editor da tecla selecionada, LED e presets">
 </p>
 
 O que você grava fica na memória do próprio pad: continua funcionando em qualquer computador,
@@ -31,6 +31,13 @@ ao ligar o Mac: ⚙︎ → **Abrir ao iniciar sessão**.
 **Idioma:** português, inglês ou espanhol. Segue o idioma do macOS (inglês para os demais);
 para escolher outro, ⚙︎ → **Idioma**.
 
+<details>
+<summary>Ver o painel em inglês</summary>
+<p align="center">
+  <img src="docs/images/panel-en.png" width="400" alt="O mesmo painel com a interface em inglês">
+</p>
+</details>
+
 **Atualizar:** ⚙︎ → **Atualizar Macropad…** baixa a versão mais nova, troca o app e reabre.
 A versão instalada aparece no cabeçalho do painel.
 
@@ -41,7 +48,7 @@ libusb usa.
 ## Usando
 
 <p align="center">
-  <img src="docs/images/pad.png" width="460" alt="Desenho do pad: seis teclas pretas mostrando o que cada uma faz e o knob">
+  <img src="docs/images/pad.png" width="350" alt="Desenho do pad: seis teclas pretas mostrando o que cada uma faz e o knob">
 </p>
 
 Clique numa tecla, ou no knob (girar ↺, pressionar, girar ↻), escolha o que ela faz e clique em
@@ -77,11 +84,19 @@ O pad só sabe mandar teclas, mídia e mouse. Para abrir programas, a tecla envi
 
 O app precisa estar aberto para essas teclas funcionarem.
 
+<p align="center">
+  <img src="docs/images/programa.png" width="400" alt="Editor de tecla no modo Programa: abrir o app Calculadora; a tecla envia ⌃⌥⇧⌘1">
+</p>
+
 ### Preset por app
 
 Em **Preset por app**, ligue **Automático** e escolha um preset para cada app: o pad é regravado
 sozinho quando você troca de app (em menos de um segundo). Ex.: Terminal → *Vibe Coder*,
 Spotify → *Mídia*, e um preset padrão para os outros apps.
+
+<p align="center">
+  <img src="docs/images/preset-por-app.png" width="400" alt="Seção Preset por app aberta: Terminal usa Vibe Coder, Safari usa Navegação, Music usa Mídia e os outros apps usam Edição">
+</p>
 
 ### E as camadas?
 
@@ -150,6 +165,9 @@ swift test                          # confere byte a byte com os pacotes do CLI 
 swift run MacropadMenuBar           # roda sem empacotar
 ./scripts/build-app.sh --install    # empacota, copia para /Applications e abre
 ```
+
+As imagens deste README são geradas pelo próprio app (`MacropadMenuBar --screenshots <pasta>`,
+com dados de exemplo): rode o workflow **screenshots** na aba *Actions* quando a interface mudar.
 
 Precisa das ferramentas do Xcode (`xcode-select --install`). Cada push em `main` que muda código
 roda os testes e o build no GitHub Actions e publica uma release com o `Macropad.zip` universal
