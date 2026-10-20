@@ -174,3 +174,63 @@ final class DisplayTests: XCTestCase {
         }
     }
 }
+
+final class AppConfigTests: XCTestCase {
+    func testTriggersAreValidUniqueHyperCombos() throws {
+        XCTAssertEqual(Set(AppConfig.triggerPool).count, 36)
+        for trigger in AppConfig.triggerPool {
+            let action = try Action(parsing: trigger)
+            XCTAssertEqual(action.canonical, trigger, "trigger must already be canonical")
+            guard case .keys(let steps) = action else { return XCTFail() }
+            XCTAssertEqual(steps.count, 1)
+            XCTAssertEqual(steps[0].mods, 0x0F)
+            XCTAssertNotNil(MacKeyCodes.names.first { $0.value == Keys.keyName(for: steps[0].code) },
+                            "\(trigger) needs a macOS key code for the global hot key")
+        }
+    }
+
+    func testAllocateLookupAndPrune() throws {
+        var config = AppConfig()
+        let first = try XCTUnwrap(config.freeTrigger())
+        XCTAssertEqual(first, "ctrl+opt+shift+cmd+1")
+        config.commands[first] = Command(kind: .openApp, value: "/Applications/Safari.app")
+        XCTAssertEqual(config.freeTrigger(), "ctrl+opt+shift+cmd+2")
+        XCTAssertEqual(config.freeTrigger(reserved: ["ctrl+opt+shift+cmd+2"]), "ctrl+opt+shift+cmd+3")
+
+        // Spelling in the layout file doesn't matter.
+        XCTAssertEqual(config.command(forActionText: "cmd+shift+opt+ctrl+1")?.label, "Safari")
+        XCTAssertNil(config.command(forActionText: "cmd+c"))
+
+        var layout = Layout()
+        try layout.set(layer: 1, slot: .key3, actionText: first)
+        config.commands["ctrl+opt+shift+cmd+9"] = Command(kind: .shell, value: "say oi")
+        config.pruneCommands(keeping: [layout])
+        XCTAssertEqual(Array(config.commands.keys), [first])
+    }
+
+    func testRulesAndRoundTrip() throws {
+        var config = AppConfig()
+        config.autoSwitch = true
+        config.setRule(AutoRule(bundleID: "com.apple.Terminal", appName: "Terminal", preset: Preset.vibeCoder.id))
+        config.setRule(AutoRule(bundleID: "com.apple.Terminal", appName: "Terminal", preset: Preset.editing.id))
+        XCTAssertEqual(config.rules.count, 1)
+        XCTAssertEqual(config.presetID(for: "com.apple.Terminal"), Preset.editing.id)
+        XCTAssertNil(config.presetID(for: "com.spotify.client"))
+        config.defaultPreset = Preset.media.id
+        XCTAssertEqual(config.presetID(for: "com.spotify.client"), Preset.media.id)
+        config.commands["ctrl+opt+shift+cmd+a"] = Command(kind: .openURL, value: "https://claude.ai")
+
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".json")
+        try config.save(to: url)
+        XCTAssertEqual(AppConfig.load(from: url), config)
+        XCTAssertEqual(AppConfig.load(from: url.appendingPathExtension("missing")), AppConfig())
+    }
+
+    func testCommandValidityAndLabels() {
+        XCTAssertFalse(Command(kind: .openApp, value: "  ").isValid)
+        XCTAssertFalse(Command(kind: .openURL, value: "not a url").isValid)
+        XCTAssertTrue(Command(kind: .openURL, value: "https://github.com/x").isValid)
+        XCTAssertEqual(Command(kind: .openURL, value: "https://github.com/x").label, "github.com")
+        XCTAssertEqual(Command(kind: .shortcut, value: "Modo foco").label, "Modo foco")
+    }
+}

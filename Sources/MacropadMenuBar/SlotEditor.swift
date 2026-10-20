@@ -1,10 +1,12 @@
+import AppKit
 import MacropadCore
 import SwiftUI
+import UniformTypeIdentifiers
 
 /// Edits what one slot does: a key combo/sequence, a media key, a mouse action or nothing.
 struct SlotEditor: View {
     enum Kind: String, CaseIterable, Identifiable {
-        case keys = "Teclas", media = "Mídia", mouse = "Mouse", none = "Nada"
+        case keys = "Teclas", media = "Mídia", mouse = "Mouse", program = "Programa", none = "Nada"
         var id: String { rawValue }
     }
 
@@ -14,6 +16,7 @@ struct SlotEditor: View {
     let slot: Slot
     let layer: Int
     let current: String?
+    let initialCommand: Command?
 
     @State private var kind: Kind
     @State private var keysText: String
@@ -21,11 +24,16 @@ struct SlotEditor: View {
     @State private var mouse: String
     @State private var mouseMods: Set<String>
     @State private var recordedSteps = 0
+    @State private var commandKind: Command.Kind
+    @State private var commandValue: String
 
-    init(slot: Slot, layer: Int, current: String?) {
+    init(slot: Slot, layer: Int, current: String?, command: Command?) {
         self.slot = slot
         self.layer = layer
         self.current = current
+        self.initialCommand = command
+        _commandKind = State(initialValue: command?.kind ?? .openApp)
+        _commandValue = State(initialValue: command?.value ?? "")
         let action = current.flatMap { try? Action(parsing: $0) }
         var kind = Kind.none, keysText = "", media = "volume-up", mouse = "click", mods = Set<String>()
         switch action {
@@ -42,6 +50,7 @@ struct SlotEditor: View {
         case nil:
             if let current, !current.isEmpty { kind = .keys; keysText = current }
         }
+        if command != nil { kind = .program }
         _kind = State(initialValue: kind)
         _keysText = State(initialValue: keysText)
         _media = State(initialValue: media)
@@ -55,7 +64,7 @@ struct SlotEditor: View {
         case .keys: keysText
         case .media: media
         case .mouse: (Keys.modifiers.map(\.name).filter { mouseMods.contains($0) } + [mouse]).joined(separator: "+")
-        case .none: nil
+        case .program, .none: nil
         }
     }
 
@@ -63,7 +72,11 @@ struct SlotEditor: View {
         actionText.map { text in Result { try Action(parsing: text) } }
     }
 
+    private var command: Command { Command(kind: commandKind, value: commandValue) }
+
     private var isUnchanged: Bool {
+        if kind == .program { return command == initialCommand }
+        if initialCommand != nil { return false }
         guard let text = actionText else { return current == nil }
         guard let current, let a = try? Action(parsing: text), let b = try? Action(parsing: current) else { return false }
         return a == b
@@ -75,18 +88,18 @@ struct SlotEditor: View {
                 Text(slot.title).font(.subheadline.weight(.semibold))
                 Text("· camada \(layer)").font(.caption).foregroundStyle(.secondary)
                 Spacer()
-                Picker("Tipo", selection: $kind) {
-                    ForEach(Kind.allCases) { Text($0.rawValue).tag($0) }
-                }
-                .pickerStyle(.segmented)
-                .labelsHidden()
-                .frame(width: 210)
             }
+            Picker("Tipo", selection: $kind) {
+                ForEach(Kind.allCases) { Text($0.rawValue).tag($0) }
+            }
+            .pickerStyle(.segmented)
+            .labelsHidden()
 
             switch kind {
             case .keys: keysEditor
             case .media: mediaEditor
             case .mouse: mouseEditor
+            case .program: programEditor
             case .none:
                 Text("A tecla não faz nada.").font(.caption).foregroundStyle(.secondary)
             }
@@ -96,7 +109,8 @@ struct SlotEditor: View {
                 Spacer()
                 Button(kind == .none ? "Limpar no pad" : "Gravar no pad") {
                     recorder.stop()
-                    if let text = actionText { model.set(slot, to: text) } else { model.clear(slot) }
+                    if kind == .program { model.setCommand(slot, command) }
+                    else if let text = actionText { model.set(slot, to: text) } else { model.clear(slot) }
                 }
                 .keyboardShortcut(.defaultAction)
                 .disabled(!canWrite)
@@ -109,6 +123,7 @@ struct SlotEditor: View {
 
     private var canWrite: Bool {
         guard model.connected, !model.busy, !isUnchanged else { return false }
+        if kind == .program { return command.isValid }
         if case .failure? = parsed { return false }
         return true
     }
@@ -169,6 +184,20 @@ struct SlotEditor: View {
     }
 
     @ViewBuilder private var validation: some View {
+        if kind == .program {
+            if let trigger = model.layout.text(layer: layer, slot: slot), initialCommand != nil, command == initialCommand,
+               let action = try? Action(parsing: trigger) {
+                Label("A tecla envia \(action.displayLabel)", systemImage: "keyboard")
+                    .font(.caption).foregroundStyle(.secondary)
+            } else {
+                EmptyView()
+            }
+        } else {
+            keyValidation
+        }
+    }
+
+    @ViewBuilder private var keyValidation: some View {
         switch parsed {
         case .success(let action)?:
             HStack(spacing: 4) {
@@ -188,6 +217,61 @@ struct SlotEditor: View {
         case nil:
             EmptyView()
         }
+    }
+
+    private var programEditor: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Picker("Ação", selection: $commandKind) {
+                Text("Abrir app").tag(Command.Kind.openApp)
+                Text("Abrir link ou arquivo").tag(Command.Kind.openURL)
+                Text("Executar script (zsh)").tag(Command.Kind.shell)
+                Text("Rodar atalho do app Atalhos").tag(Command.Kind.shortcut)
+            }
+            .labelsHidden()
+            .onChange(of: commandKind) { _ in commandValue = "" }
+
+            switch commandKind {
+            case .openApp:
+                HStack {
+                    if commandValue.isEmpty {
+                        Text("Nenhum app escolhido").foregroundStyle(.secondary)
+                    } else {
+                        Image(nsImage: NSWorkspace.shared.icon(forFile: commandValue))
+                            .resizable().frame(width: 18, height: 18)
+                        Text(Command(kind: .openApp, value: commandValue).label).lineLimit(1)
+                    }
+                    Spacer()
+                    Button("Escolher…", action: chooseApp)
+                }
+            case .openURL:
+                TextField("https://… , obsidian://… ou file:///…", text: $commandValue)
+                    .textFieldStyle(.roundedBorder)
+            case .shell:
+                TextField("ex.: open -a Terminal ~/projeto && say pronto", text: $commandValue, axis: .vertical)
+                    .textFieldStyle(.roundedBorder)
+                    .font(.system(.body, design: .monospaced))
+                    .lineLimit(1...4)
+            case .shortcut:
+                TextField("Nome do atalho, ex.: Modo foco", text: $commandValue)
+                    .textFieldStyle(.roundedBorder)
+            }
+
+            Text(commandKind == .shell
+                 ? "Roda no zsh com seu PATH de login. A saída vai para ~/Library/Logs/Macropad.log. O app Macropad precisa estar aberto."
+                 : "O pad envia um atalho reservado (⌃⌥⇧⌘ + tecla) e o Macropad faz o resto. O app precisa estar aberto.")
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+
+    private func chooseApp() {
+        NSApp.activate(ignoringOtherApps: true)
+        let panel = NSOpenPanel()
+        panel.directoryURL = URL(fileURLWithPath: "/Applications")
+        panel.allowedContentTypes = [.application]
+        panel.message = "Escolha o app que a tecla deve abrir"
+        if panel.runModal() == .OK, let url = panel.url { commandValue = url.path }
     }
 
     private func startRecording() {

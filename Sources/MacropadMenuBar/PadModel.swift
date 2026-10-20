@@ -22,10 +22,25 @@ final class PadModel: ObservableObject {
     @Published var selectedSlot: Slot? = .key1
     @Published var message: Message?
     @Published var launchAtLogin = SMAppService.mainApp.status == .enabled
+    /// Program/script commands and per-app rules (`~/.config/macropad/app.json`).
+    @Published private(set) var config = AppConfig.load()
+    /// The preset last put on the pad by the per-app automation.
+    @Published private(set) var activePresetID: String?
+    @Published private(set) var frontAppName: String?
 
     let layoutURL = Layout.defaultURL
     private let presetStore = PresetStore()
     private var monitor: PadMonitor?
+    private var queue: [Job] = []
+    private var autoTask: Task<Void, Never>?
+
+    private struct Job {
+        var packets: [[UInt8]]
+        var success: String
+        var update: ((inout Layout) -> Void)?
+        var after: (() -> Void)?
+        var quiet: Bool
+    }
 
     init() {
         reload()
@@ -33,6 +48,16 @@ final class PadModel: ObservableObject {
             Task { @MainActor in self?.connected = connected }
         }
         monitor?.start()
+        HotKeyCenter.shared.onTrigger = { [weak self] trigger in
+            Task { @MainActor in self?.runTrigger(trigger) }
+        }
+        syncHotKeys()
+        NSWorkspace.shared.notificationCenter.addObserver(
+            forName: NSWorkspace.didActivateApplicationNotification, object: nil, queue: .main
+        ) { [weak self] note in
+            let app = note.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication
+            Task { @MainActor in self?.frontAppChanged(app) }
+        }
     }
 
     /// Re-reads the layout file (the CLI may have changed it) and the user presets.
@@ -88,7 +113,10 @@ final class PadModel: ObservableObject {
 
     func applyPreset(_ preset: Preset) {
         let previous = layout
-        apply(preset.layout, name: preset.name) { self.undoLayout = previous }
+        apply(preset.layout, name: preset.name) {
+            self.undoLayout = previous
+            self.activePresetID = preset.id
+        }
     }
 
     func undo() {
@@ -109,15 +137,24 @@ final class PadModel: ObservableObject {
     }
 
     private func write(_ packets: [[UInt8]], success: String, update: ((inout Layout) -> Void)?,
-                       after: (() -> Void)? = nil) {
-        guard !busy else { return }
+                       after: (() -> Void)? = nil, quiet: Bool = false) {
+        // A manual edit means the pad no longer matches the automatic preset.
+        if !quiet { activePresetID = nil }
+        queue.append(Job(packets: packets, success: success, update: update, after: after, quiet: quiet))
+        if !busy { runNext() }
+    }
+
+    /// Writes queued jobs one at a time, so an automatic preset switch never collides with an edit.
+    private func runNext() {
+        guard !queue.isEmpty else { return }
+        let job = queue.removeFirst()
+        let (packets, success, update, after) = (job.packets, job.success, job.update, job.after)
         busy = true
-        message = nil
-        undoLayout = nil
+        if !job.quiet { message = nil; undoLayout = nil }
         Task.detached(priority: .userInitiated) {
             let result = Result { try PadUSB.send(packets) }
             await MainActor.run {
-                self.busy = false
+                defer { self.busy = false; self.runNext() }
                 switch result {
                 case .success:
                     if let update {
@@ -130,6 +167,7 @@ final class PadModel: ObservableObject {
                         }
                     }
                     after?()
+                    self.pruneCommands()
                     self.show(success, error: false)
                 case .failure(let error):
                     self.show(error.localizedDescription, error: true)
@@ -154,6 +192,7 @@ final class PadModel: ObservableObject {
         do {
             try presetStore.delete(preset)
             userPresets = presetStore.userPresets()
+            pruneCommands()
         } catch {
             show(error.localizedDescription, error: true)
         }
@@ -185,6 +224,127 @@ final class PadModel: ObservableObject {
 
     func revealLayoutFile() {
         NSWorkspace.shared.activateFileViewerSelecting([layoutURL])
+    }
+
+    // MARK: Program / script keys
+
+    var allPresets: [Preset] { Preset.builtIns + userPresets }
+
+    func preset(id: String?) -> Preset? { allPresets.first { $0.id == id } }
+
+    /// What the pad drawing shows on a slot: the program it opens, or the keys it sends.
+    func label(for slot: Slot) -> String {
+        let text = layout.text(layer: layer, slot: slot)
+        if let command = config.command(forActionText: text) { return "▸ " + command.label }
+        return text.map { (try? Action(parsing: $0))?.displayLabel ?? $0 } ?? ""
+    }
+
+    /// The command a slot's current action triggers, if any.
+    func command(for slot: Slot) -> Command? {
+        config.command(forActionText: layout.text(layer: layer, slot: slot))
+    }
+
+    /// Binds `slot` to a fresh trigger shortcut and remembers what to run when it arrives.
+    func setCommand(_ slot: Slot, _ command: Command) {
+        guard command.isValid else { show("Preencha o que a tecla deve abrir ou executar", error: true); return }
+        let inUse = Set(([layout] + userPresets.map(\.layout)).flatMap { $0.layers.values.flatMap(\.values) }
+            .compactMap { try? Action(parsing: $0).canonical })
+        guard let trigger = config.freeTrigger(reserved: inUse), let action = try? Action(parsing: trigger) else {
+            show("Todos os atalhos-gatilho estão em uso; limpe alguma tecla de programa", error: true)
+            return
+        }
+        let layer = self.layer
+        write(PadProtocol.bindPackets(slot: slot, layer: layer, action: action),
+              success: "\(slot.title) abre “\(command.label)” (envia \(action.displayLabel))",
+              update: { layout in try? layout.set(layer: layer, slot: slot, actionText: trigger) },
+              after: {
+                  self.config.commands[trigger] = command
+                  self.saveConfig()
+              })
+    }
+
+    func runTrigger(_ trigger: String) {
+        guard let command = config.commands[trigger] else { return }
+        do { try CommandRunner.run(command) } catch { show(error.localizedDescription, error: true) }
+    }
+
+    /// Forgets commands no layout uses any more and re-registers the global shortcuts.
+    private func pruneCommands() {
+        var pruned = config
+        pruned.pruneCommands(keeping: [layout] + userPresets.map(\.layout))
+        if pruned != config { config = pruned; saveConfig() } else { syncHotKeys() }
+    }
+
+    private func saveConfig() {
+        do { try config.save() } catch { show("Não consegui salvar \(AppConfig.defaultURL.path): \(error.localizedDescription)", error: true) }
+        syncHotKeys()
+    }
+
+    private func syncHotKeys() {
+        let failed = HotKeyCenter.shared.sync(Set(config.commands.keys))
+        if !failed.isEmpty {
+            show("Outro app já usa \(failed.joined(separator: ", ")); essas teclas não vão abrir nada", error: true)
+        }
+    }
+
+    // MARK: Per-app presets
+
+    func setAutoSwitch(_ enabled: Bool) {
+        config.autoSwitch = enabled
+        saveConfig()
+        if enabled { frontAppChanged(NSWorkspace.shared.frontmostApplication, force: true) }
+    }
+
+    func setRule(bundleID: String, appName: String, presetID: String) {
+        config.setRule(AutoRule(bundleID: bundleID, appName: appName, preset: presetID))
+        saveConfig()
+    }
+
+    func removeRule(bundleID: String) {
+        config.removeRule(bundleID: bundleID)
+        saveConfig()
+    }
+
+    func setDefaultPreset(_ presetID: String?) {
+        config.defaultPreset = presetID
+        saveConfig()
+    }
+
+    /// Adds a rule for an app picked in an open panel (or the app in front before the popover).
+    func addRuleFromPanel() {
+        NSApp.activate(ignoringOtherApps: true)
+        let panel = NSOpenPanel()
+        panel.directoryURL = URL(fileURLWithPath: "/Applications")
+        panel.allowedContentTypes = [.application]
+        panel.message = "Escolha o app que deve trocar o preset do pad"
+        guard panel.runModal() == .OK, let url = panel.url, let bundle = Bundle(url: url),
+              let bundleID = bundle.bundleIdentifier else { return }
+        let name = FileManager.default.displayName(atPath: url.path).replacingOccurrences(of: ".app", with: "")
+        setRule(bundleID: bundleID, appName: name, presetID: activePresetID ?? Preset.vibeCoder.id)
+    }
+
+    private var ownBundleID: String { Bundle.main.bundleIdentifier ?? "com.geraldoantonio.macropad-menubar" }
+
+    private func frontAppChanged(_ app: NSRunningApplication?, force: Bool = false) {
+        guard let app, let bundleID = app.bundleIdentifier, bundleID != ownBundleID else { return }
+        frontAppName = app.localizedName
+        guard config.autoSwitch, !identifying, connected,
+              let presetID = config.presetID(for: bundleID), let preset = preset(id: presetID) else { return }
+        guard force || presetID != activePresetID else { return }
+        // Quick app switches (⌘-Tab through several apps) only write the one you land on.
+        autoTask?.cancel()
+        autoTask = Task { @MainActor in
+            try? await Task.sleep(nanoseconds: 300_000_000)
+            guard !Task.isCancelled else { return }
+            self.applyAutomatically(preset, appName: app.localizedName ?? bundleID)
+        }
+    }
+
+    private func applyAutomatically(_ preset: Preset, appName: String) {
+        guard let packets = try? PadProtocol.applyPackets(preset.layout) else { return }
+        activePresetID = preset.id
+        write(packets, success: "\(appName): preset “\(preset.name)”",
+              update: { layout in layout = preset.layout }, quiet: true)
     }
 
     // MARK: Misc

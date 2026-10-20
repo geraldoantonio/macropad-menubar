@@ -12,12 +12,14 @@ struct ContentView: View {
             PadView()
             if let slot = model.selectedSlot {
                 SlotEditor(slot: slot, layer: model.layer,
-                           current: model.layout.text(layer: model.layer, slot: slot))
-                    .id("\(slot.rawValue)-\(model.layer)-\(model.layout.text(layer: model.layer, slot: slot) ?? "")")
+                           current: model.layout.text(layer: model.layer, slot: slot),
+                           command: model.command(for: slot))
+                    .id("\(slot.rawValue)-\(model.layer)-\(model.layout.text(layer: model.layer, slot: slot) ?? "")-\(model.command(for: slot)?.value ?? "")")
             }
             Divider()
             LEDPicker()
             PresetsRow()
+            AutomationView()
             MessageView()
             Divider()
             FooterView()
@@ -162,7 +164,7 @@ private struct KeyCap: View {
     var body: some View {
         let selected = model.selectedSlot == slot
         let text = model.layout.text(layer: model.layer, slot: slot)
-        let label = text.map { (try? Action(parsing: $0))?.displayLabel ?? $0 } ?? ""
+        let label = model.label(for: slot)
         Button { model.selectedSlot = slot } label: {
             ZStack {
                 if let glow {
@@ -252,8 +254,8 @@ private struct KnobView: View {
 
     private var caption: String {
         guard let slot = model.selectedSlot, [.knobLeft, .knobPress, .knobRight].contains(slot) else { return "Knob" }
-        let text = model.layout.text(layer: model.layer, slot: slot)
-        return text.map { (try? Action(parsing: $0))?.displayLabel ?? $0 } ?? "—"
+        let label = model.label(for: slot)
+        return label.isEmpty ? "—" : label
     }
 
     private func turnButton(_ slot: Slot, systemImage: String) -> some View {

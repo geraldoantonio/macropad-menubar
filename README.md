@@ -19,10 +19,16 @@ computador, sem o app aberto.
   - *Mídia:* volume, mudo, play/pausa, faixa anterior/próxima, brilho.
   - *Mouse:* cliques e rolagem, com modificadores (`ctrl+scroll-up` = zoom).
   - *Nada:* limpa o slot.
+- **Teclas de programa**: uma tecla pode abrir um app, um link, rodar um script (zsh) ou um atalho
+  do app Atalhos. O pad envia um atalho reservado (⌃⌥⇧⌘ + tecla) que o Macropad registra como
+  atalho global — sem pedir permissão de Acessibilidade. O app precisa estar aberto.
+- **Preset por app**: troca o preset do pad sozinho conforme o app em uso (ex.: Terminal → Vibe
+  Coder, Spotify → Mídia), com um preset padrão opcional para os outros apps.
 - **Presets** prontos (Vibe Coder para o Claude Code, Edição, Mídia, Navegação), seus próprios
   presets salvos, importação/exportação em YAML e **Desfazer** depois de aplicar um preset.
 - **LED**: desligado / tecla pressionada / arco-íris.
-- **Camadas 1–3** (com aviso: neste modelo a camada costuma ser ignorada e a última gravação vence).
+- **Camadas 1–3** (com aviso: neste modelo o firmware ignora a camada e a última gravação vence —
+  use *Preset por app* para ter "camadas" de verdade).
 - **Status de conexão**: o ícone na barra fica cheio quando o pad está conectado.
 - **Identificar teclas**: cada tecla passa a digitar seu número para você descobrir qual é qual;
   depois *Restaurar layout*.
@@ -52,6 +58,8 @@ clique direito → **Abrir**, ou rode `xattr -dr com.apple.quarantine /Applicati
 |---|---|
 | `~/.config/macropad/layout.yaml` | O que está gravado no pad (o pad não pode ser lido de volta). Compartilhado com o CLI; `$MACROPAD_LAYOUT` muda o caminho. |
 | `~/.config/macropad/presets/*.yaml` | Seus presets, no mesmo formato. |
+| `~/.config/macropad/app.json` | Configuração só do app: comandos das teclas de programa e regras por app. |
+| `~/Library/Logs/Macropad.log` | Saída dos scripts. |
 
 ```yaml
 led: 1
