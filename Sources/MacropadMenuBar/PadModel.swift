@@ -27,6 +27,7 @@ final class PadModel: ObservableObject {
     /// The preset last put on the pad by the per-app automation.
     @Published private(set) var activePresetID: String?
     @Published private(set) var frontAppName: String?
+    @Published private(set) var updating = false
 
     let layoutURL = Layout.defaultURL
     private let presetStore = PresetStore()
@@ -345,6 +346,27 @@ final class PadModel: ObservableObject {
         activePresetID = preset.id
         write(packets, success: "\(appName): preset “\(preset.name)”",
               update: { layout in layout = preset.layout }, quiet: true)
+    }
+
+    // MARK: Updates
+
+    func checkForUpdates() {
+        guard !updating else { return }
+        updating = true
+        show("Procurando atualizações…", error: false)
+        Task { @MainActor in
+            defer { updating = false }
+            switch await Updater.check() {
+            case .upToDate:
+                show("Você já está na versão mais nova (\(Updater.versionDescription)).", error: false)
+            case .failed(let reason):
+                show("Não consegui verificar atualizações: \(reason)", error: true)
+            case .available(let commit):
+                show("Baixando a versão \(commit.prefix(7))… o Macropad vai fechar e abrir de novo sozinho.", error: false)
+                let reason = await Updater.install()
+                show("A atualização falhou: \(reason)", error: true)
+            }
+        }
     }
 
     // MARK: Misc

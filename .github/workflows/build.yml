@@ -3,7 +3,6 @@ name: build
 on:
   push:
     branches: [main]
-    tags: ["v*"]
   pull_request:
   workflow_dispatch:
 
@@ -13,10 +12,10 @@ permissions:
 jobs:
   macos:
     runs-on: macos-15
+    env:
+      VERSION: 0.2.${{ github.run_number }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Swift version
         run: swift --version
@@ -31,14 +30,19 @@ jobs:
         run: |
           cd build
           ditto -c -k --keepParent Macropad.app Macropad.zip
+          echo "$GITHUB_SHA" > commit.txt
 
       - uses: actions/upload-artifact@v4
         with:
           name: Macropad
           path: build/Macropad.zip
 
+      # Every push to main becomes a release, so the app's "Atualizar" button can fetch
+      # releases/latest/download/Macropad.zip without logging in.
       - name: Release
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release create "$GITHUB_REF_NAME" build/Macropad.zip --title "$GITHUB_REF_NAME" --generate-notes
+        run: |
+          gh release create "v$VERSION" build/Macropad.zip build/commit.txt \
+            --target "$GITHUB_SHA" --title "Macropad $VERSION" --generate-notes --latest

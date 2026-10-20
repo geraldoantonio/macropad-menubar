@@ -12,6 +12,7 @@ EXECUTABLE="MacropadMenuBar"
 BUNDLE_ID="com.geraldoantonio.macropad-menubar"
 VERSION="${VERSION:-$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' || true)}"
 VERSION="${VERSION:-0.1.0}"
+COMMIT="${GITHUB_SHA:-$(git rev-parse HEAD 2>/dev/null || true)}"
 
 ARCH_FLAGS=()
 if [[ "${UNIVERSAL:-0}" == "1" ]]; then ARCH_FLAGS=(--arch arm64 --arch x86_64); fi
@@ -41,6 +42,7 @@ cat > "$APP/Contents/Info.plist" <<PLIST
     <key>LSUIElement</key><true/>
     <key>LSApplicationCategoryType</key><string>public.app-category.utilities</string>
     <key>NSHumanReadableCopyright</key><string>MIT License</string>
+    <key>MacropadCommit</key><string>$COMMIT</string>
 </dict>
 </plist>
 PLIST

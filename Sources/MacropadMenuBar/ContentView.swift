@@ -395,10 +395,14 @@ private struct FooterView: View {
             Menu {
                 Toggle("Abrir ao iniciar sessão", isOn: Binding(
                     get: { model.launchAtLogin }, set: { model.toggleLaunchAtLogin($0) }))
+                Button(model.updating ? "Atualizando…" : "Atualizar Macropad…") { model.checkForUpdates() }
+                    .disabled(model.updating)
                 Button("Mostrar arquivo de layout") { model.revealLayoutFile() }
                 Button("Recarregar") { model.reload() }
                 Divider()
                 Button("Sair do Macropad") { NSApp.terminate(nil) }
+                Divider()
+                Text("Versão \(Updater.versionDescription)")
             } label: { Image(systemName: "gearshape") }
                 .menuStyle(.borderlessButton)
                 .fixedSize()

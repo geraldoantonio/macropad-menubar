@@ -48,8 +48,9 @@ cd macropad-menubar
 ./scripts/build-app.sh --install     # compila, copia para /Applications e abre
 ```
 
-Ou baixe o `Macropad.zip` gerado pelo GitHub Actions (aba *Actions* → último build → *Artifacts*,
-ou em *Releases*). Como o app é assinado só localmente (ad hoc), na primeira vez abra com
+Ou baixe o `Macropad.zip` da [release mais nova](https://github.com/geraldoantonio/macropad-menubar/releases/latest).
+Depois de instalado, use ⚙︎ → **Atualizar Macropad…** para pegar versões novas (cada push em `main`
+vira uma release). Como o app é assinado só localmente (ad hoc), na primeira vez abra com
 clique direito → **Abrir**, ou rode `xattr -dr com.apple.quarantine /Applications/Macropad.app`.
 
 ## Arquivos
