@@ -1,7 +1,7 @@
 import Foundation
 import IOKit
 import IOKit.usb
-import IOUSBHost
+import PadUSBC
 import MacropadCore
 
 enum PadUSBError: LocalizedError {
@@ -24,7 +24,7 @@ enum PadUSBError: LocalizedError {
 /// Raw USB access to the pad's config channel.
 ///
 /// The config channel is a HID-class interface whose only endpoint is an interrupt OUT pipe.
-/// macOS binds no driver to it, so IOUSBHost can open the interface directly — no
+/// macOS binds no driver to it, so IOUSBLib can open the interface directly — no
 /// permissions or entitlements needed for a non-sandboxed app.
 enum PadUSB {
     static func matching(_ className: String) -> CFDictionary {
@@ -41,77 +41,23 @@ enum PadUSB {
         return true
     }
 
-    /// Writes `packets` in order to the first interface that has an interrupt OUT endpoint.
+    /// Writes `packets` in order to the first interface that has an interrupt OUT endpoint
+    /// (interface 1 on real hardware). Done in C with IOUSBLib — the API libusb uses — see
+    /// Sources/PadUSBC/padusb.c.
     static func send(_ packets: [[UInt8]]) throws {
-        guard isConnected else { throw PadUSBError.notConnected }
-
-        var iterator: io_iterator_t = 0
-        let kr = IOServiceGetMatchingServices(kIOMainPortDefault, matching("IOUSBHostInterface"), &iterator)
-        guard kr == KERN_SUCCESS else { throw PadUSBError.noConfigEndpoint(["IOKit: 0x\(String(kr, radix: 16))"]) }
-        defer { IOObjectRelease(iterator) }
-
-        var services: [io_service_t] = []
-        while case let service = IOIteratorNext(iterator), service != 0 { services.append(service) }
-        defer { services.forEach { IOObjectRelease($0) } }
-        // Interfaces with no driver attached first: on real hardware that's interface 1, the
-        // config channel. The HID ones (0, 2, 3) are only tried as a fallback.
-        services.sort { !hasDriver($0) && hasDriver($1) }
-
-        var notes: [String] = []
-        for service in services {
-            let number = interfaceNumber(service)
-
-            let interface: IOUSBHostInterface
-            do {
-                interface = try IOUSBHostInterface(__ioService: service, options: [], queue: nil, interestHandler: nil)
-            } catch {
-                // Interfaces 0, 2 and 3 belong to the HID driver; opening them fails, which is fine.
-                notes.append("interface \(number): \(error.localizedDescription)")
-                continue
-            }
-            defer { interface.destroy() }
-
-            guard let pipe = interruptOutPipe(of: interface) else {
-                notes.append("interface \(number): sem endpoint de saída")
-                continue
-            }
-            for (index, packet) in packets.enumerated() {
-                let data = NSMutableData(bytes: packet, length: packet.count)
-                var transferred = 0
-                do {
-                    try pipe.__sendIORequest(with: data, bytesTransferred: &transferred, completionTimeout: 1.0)
-                } catch {
-                    throw PadUSBError.writeFailed("pacote \(index + 1) de \(packets.count) (\(error.localizedDescription))")
-                }
-                if transferred != packet.count {
-                    throw PadUSBError.writeFailed("pacote \(index + 1) gravou \(transferred) de \(packet.count) bytes")
-                }
-            }
-            return
+        let flat = packets.flatMap { $0 }
+        var err = [CChar](repeating: 0, count: 2048)
+        let result = flat.withUnsafeBufferPointer { buffer in
+            padusb_send(UInt16(PadProtocol.vendorID), UInt16(PadProtocol.productID),
+                        buffer.baseAddress, packets.count, PadProtocol.packetSize, &err, err.count)
         }
-        throw PadUSBError.noConfigEndpoint(notes)
-    }
-
-    private static func interruptOutPipe(of interface: IOUSBHostInterface) -> IOUSBHostPipe? {
-        for address in 1...15 {
-            guard let pipe = try? interface.copyPipe(withAddress: address) else { continue }
-            let attributes = pipe.descriptors.pointee.descriptor.bmAttributes
-            if attributes & 0x03 == 0x03 { return pipe }
+        let detail = String(cString: err).trimmingCharacters(in: .whitespacesAndNewlines)
+        switch Int(result) {
+        case Int(PADUSB_OK): return
+        case Int(PADUSB_NOT_FOUND): throw PadUSBError.notConnected
+        case Int(PADUSB_WRITE_FAILED): throw PadUSBError.writeFailed(detail)
+        default: throw PadUSBError.noConfigEndpoint(detail.split(separator: "\n").map(String.init))
         }
-        return nil
-    }
-
-    private static func hasDriver(_ service: io_service_t) -> Bool {
-        var child: io_registry_entry_t = 0
-        guard IORegistryEntryGetChildEntry(service, kIOServicePlane, &child) == KERN_SUCCESS else { return false }
-        IOObjectRelease(child)
-        return true
-    }
-
-    private static func interfaceNumber(_ service: io_service_t) -> String {
-        let value = IORegistryEntryCreateCFProperty(service, "bInterfaceNumber" as CFString, kCFAllocatorDefault, 0)?
-            .takeRetainedValue()
-        return (value as? NSNumber)?.stringValue ?? "?"
     }
 }
 

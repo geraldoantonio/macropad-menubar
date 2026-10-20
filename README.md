@@ -29,7 +29,7 @@ computador, sem o app aberto.
 - Abrir automaticamente ao iniciar sessão.
 
 Não pede nenhuma permissão do macOS: o canal de configuração do pad é uma interface USB sem driver,
-que o app abre direto via IOUSBHost (não é preciso Monitoramento de Entrada nem Acessibilidade).
+que o app abre direto via IOUSBLib (a mesma API do libusb) (não é preciso Monitoramento de Entrada nem Acessibilidade).
 
 ## Instalar
 
@@ -81,7 +81,7 @@ Use `backspace` ou `forward-delete` (nunca `delete`), e `comma` / `shift+equal` 
 
 ```
 Sources/MacropadCore     lógica pura: tabelas de teclas, sintaxe, pacotes USB, layout, presets
-Sources/MacropadMenuBar  o app: SwiftUI (MenuBarExtra) + IOUSBHost
+Sources/MacropadMenuBar  o app: SwiftUI (MenuBarExtra) + IOUSBLib
 Tests/                   testes; Fixtures/ tem pacotes gerados pelo CLI Python
 ```
 

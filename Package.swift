@@ -14,8 +14,10 @@ let package = Package(
     targets: [
         // Pure logic: key tables, action syntax, USB packet building, layout files, presets.
         .target(name: "MacropadCore", dependencies: ["Yams"]),
-        // The menu bar app: SwiftUI + IOUSBHost.
-        .executableTarget(name: "MacropadMenuBar", dependencies: ["MacropadCore"]),
+        // Raw USB writes via IOUSBLib (the API libusb uses on macOS).
+        .target(name: "PadUSBC", linkerSettings: [.linkedFramework("IOKit"), .linkedFramework("CoreFoundation")]),
+        // The menu bar app: SwiftUI.
+        .executableTarget(name: "MacropadMenuBar", dependencies: ["MacropadCore", "PadUSBC"]),
         .testTarget(
             name: "MacropadCoreTests",
             dependencies: ["MacropadCore"],
