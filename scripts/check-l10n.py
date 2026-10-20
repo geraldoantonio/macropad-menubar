@@ -38,8 +38,22 @@ keys |= set(re.findall(r'\w+ = "([^"]+)"', kind))
 presets = (root / "Sources/MacropadCore/Presets.swift").read_text()
 keys |= set(re.findall(r'Preset\(name: "([^"]+)"', presets))
 
-strings = (root / "Sources/MacropadCore/L10nStrings.swift").read_text()
+# Visible text passed straight to SwiftUI, or as the branch of a ?: inside one, without L(...).
+ui_call = re.compile(r'\b(Text|Button|Label|Toggle|Picker|Menu|Section|TextField|help|accessibilityLabel)\(\s*"([^"]*[a-zà-ú]{3,}[^"]*)"')
+ternary = re.compile(r'^\s*[:?] "([^"]*[a-zà-ú]{3,}[^"]*)"')
+allowed = {"Macropad", "Presets", "LED"}
 ok = True
+for path, text in sources.items():
+    if "MacropadMenuBar" not in str(path): continue
+    for n, line in enumerate(text.splitlines(), 1):
+        for m in ui_call.finditer(line):
+            if m.group(2) not in allowed and not m.group(2).startswith("\\("):
+                print(f"{path.name}:{n}: texto sem L(): {m.group(2)!r}"); ok = False
+        m = ternary.match(line)
+        if m:
+            print(f"{path.name}:{n}: texto sem L(): {m.group(1)!r}"); ok = False
+
+strings = (root / "Sources/MacropadCore/L10nStrings.swift").read_text()
 for lang in ("en", "es"):
     block = re.search(r'static let ' + lang + r': \[String: String\] = \[(.*?)\n    \]', strings, re.S).group(1)
     pairs = re.findall(r'^\s*"((?:[^"\\]|\\.)*)":\s*"((?:[^"\\]|\\.)*)",?\s*$', block, re.M)

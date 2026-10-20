@@ -88,7 +88,7 @@ struct SlotEditor: View {
                 Text(slot.title).font(.subheadline.weight(.semibold))
                 Spacer()
             }
-            Picker("Tipo", selection: $kind) {
+            Picker(L("Tipo"), selection: $kind) {
                 ForEach(Kind.allCases) { Text(L($0.rawValue)).tag($0) }
             }
             .pickerStyle(.segmented)
@@ -147,7 +147,7 @@ struct SlotEditor: View {
             }
             Text(recorder.isRecording
                  ? L("Gravando… aperte até %@ atalhos (%@/%@). Atalhos do sistema, como ⇧⌘4, precisam ser digitados.", String(Action.maxSteps), String(recordedSteps), String(Action.maxSteps))
-                 : "Modificadores: ctrl, opt, shift, cmd (+ r para o lado direito). Separe passos de uma sequência com vírgula.")
+                 : L("Modificadores: ctrl, opt, shift, cmd (+ r para o lado direito). Separe passos de uma sequência com vírgula."))
                 .font(.caption2)
                 .foregroundStyle(recorder.isRecording ? .red : .secondary)
                 .fixedSize(horizontal: false, vertical: true)

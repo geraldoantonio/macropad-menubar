@@ -25,6 +25,9 @@ struct ContentView: View {
         }
         .padding(14)
         .frame(width: 400)
+        // Segmented controls on macOS keep the labels they were created with; a new identity
+        // per language rebuilds them (and everything else) in the new language.
+        .id(L10n.current)
         .onAppear { model.reload() }
         .onReceive(NotificationCenter.default.publisher(for: NSWindow.didBecomeKeyNotification)) { _ in
             if !model.busy { model.reload() }
