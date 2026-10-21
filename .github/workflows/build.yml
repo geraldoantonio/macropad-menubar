@@ -50,5 +50,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "v$VERSION" build/Macropad.zip build/commit.txt \
-            --target "$GITHUB_SHA" --title "Macropad $VERSION" --generate-notes --latest
+          # Errors become annotations, so they can be read without downloading the log.
+          if ! out=$(gh release create "v$VERSION" build/Macropad.zip build/commit.txt \
+                       --target "$GITHUB_SHA" --title "Macropad $VERSION" --generate-notes --latest 2>&1); then
+            echo "::error title=gh release create::${out//$'\n'/ | }"
+            exit 1
+          fi
+          echo "$out"
